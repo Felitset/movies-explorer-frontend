@@ -1,0 +1,12 @@
+.header {
+    background: #FFFFFF;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.profile_button {
+    width: 100px;
+    height: 32px;
+}

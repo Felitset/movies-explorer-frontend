@@ -1,0 +1,94 @@
+.register {
+    background: #FFFFFF;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1150px) {
+    .register {
+        margin: 0 186px;
+    }
+}
+
+@media screen and (max-width: 631px) {
+    .register {
+        margin: 0;
+    }
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+
+.header__logo {
+    width: 38px;
+    height: 38px;
+    margin-top: 70px;
+}
+
+.register__title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    width: 396px;
+    height: 29px;
+    margin: 40px 0;
+    padding: 0;
+    color: #000000;
+}
+
+.register_form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    min-width: 396px;
+}
+
+.input_title {
+    color: #A0A0A0;
+    margin: 0;
+    padding: 0;
+}
+
+.input {
+    border: none;
+    border-bottom: 2px solid #E8E8E8;
+    padding: 5px 0 10px;
+    margin-bottom: 24px;
+}
+
+.if-registered_line {
+    display: flex;
+    margin: 0 auto 70px;
+}
+
+.registered_line {
+    color: #A0A0A0;
+    margin: 0;
+    padding: 0;
+}
+
+.register-to-login_link {
+    color: #000000;
+    text-decoration: none;
+    margin: 0 6px;
+    padding: 0;
+
+}
+
+.register_button {
+    width: 396px;
+    height: 45px;
+    color: #FFFFFF;
+
+    background: #000000;
+    border-radius: 3px;
+    border: none;
+    margin: 179px auto 16px;
+}
