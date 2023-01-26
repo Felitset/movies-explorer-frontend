@@ -1,0 +1,29 @@
+.portfolio_title {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    color: #A0A0A0;
+}
+
+.portfolio_block {
+    border-bottom: 1px solid #E8E8E8;
+    display: flex;
+    justify-content: space-between;
+}
+
+.portfolio_block_title {
+    font-family: 'Inter', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 50px;
+
+color: #000000;
+}
+
+.forward_btn {
+    width: 29px;
+    height: 100%;
+}

@@ -1,0 +1,36 @@
+.promo {
+    background-color: #F3C1F8;
+}
+
+.promo_title {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    color: #000000;
+}
+
+.promo_subtitle {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;
+    opacity: 0.5;
+}
+
+.promo_btn {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    background-color: #F3C1F8;
+    opacity: 0.6;
+    border: 1px solid #000000;
+    border-radius: 3px;
+}

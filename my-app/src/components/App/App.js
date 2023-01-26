@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
-// import Footer from '../Footer/Footer';
+import Footer from '../Footer/Footer';
 import PageNotFound from '../PageNotFound/PageNotFound';
 // import './App.css';
 import '../../index.css';
@@ -18,7 +18,7 @@ function App() {
                     <Route path="/" exact>
 <Header />
 <Main />
-{/* <Footer /> */}
+<Footer />
     </Route>
     {/* <Route path="/movies">
 <Header />

@@ -1,0 +1,69 @@
+.aboutme {
+    background-color: #FFFFFF;
+}
+
+.aboutme_title_block {
+    border-bottom: 1px solid #000000;
+}
+
+.aboutme_title {
+    color: #000000;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+}
+
+.aboutme_content {
+    display: flex;
+    flex-direction: column;
+}
+
+.aboutme_content_title {
+    font-family: 'Inter', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 50px;
+line-height: 58px;
+
+color: #000000;
+}
+
+.aboutme_content_subtitle {
+    font-family: 'Inter', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 20px;
+
+color: #000000;
+padding: 0;
+margin: 0;
+}
+
+.aboutme_content_text {
+    font-family: 'Inter', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 22px;
+
+color: #000000;
+}
+
+.github_link {
+    font-family: 'Inter', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+text-decoration: none;
+color: #000000;
+}
+
+.aboutme_photo {
+    border-radius: 10px;
+    width: 270px;
+    height: 327px;
+}
