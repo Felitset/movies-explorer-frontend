@@ -1,0 +1,8 @@
+.movies_card_list {
+    list-style-type: none;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}

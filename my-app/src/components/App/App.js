@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
+import Movies from '../Movies/Movies';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Footer from '../Footer/Footer';
@@ -20,12 +21,12 @@ function App() {
 <Main />
 <Footer />
     </Route>
-    {/* <Route path="/movies">
+    <Route path="/movies">
 <Header />
 <Movies />
 <Footer />
     </Route>
-    <Route path="/saved-movies">
+    {/* <Route path="/saved-movies">
 <Header />
 <SavedMovies />
 <Footer />
