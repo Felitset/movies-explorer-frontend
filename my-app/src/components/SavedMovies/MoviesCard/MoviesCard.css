@@ -1,0 +1,40 @@
+.movie_card {
+    background-color: #F9F9F9;
+    display: flex;
+    justify-content: space-between;
+}
+
+.movie_card_info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.movie_title {
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 22px;
+color: #000000;
+}
+
+.movie_duration {
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 11px;
+line-height: 13px;
+
+color: #A0A0A0;
+}
+
+.movie_remove_from_list {
+    width: 14px;
+    height: 12px;
+}
+
+.movie_card_pic {
+    width: 220px;
+    height: 122px;
+}
