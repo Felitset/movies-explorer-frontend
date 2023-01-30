@@ -1,7 +1,15 @@
 .movie_page_link {
     text-decoration: none;
+    color: #000000;
+    font-weight: 500;
 }
 
 .saved_movies_page_link {
     text-decoration: none;
+    color: #000000;
+    font-weight: 400;
+}
+
+.movie_page_link:visited {
+
 }

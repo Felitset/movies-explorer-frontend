@@ -1,0 +1,67 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 626px;
+}
+
+.profile_greeting {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+}
+
+.profile_update_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+/* .input_block {
+    display: flex;
+    justify-content: space-between;
+} */
+
+.input_label {
+    font-family: 'Inter', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 11px;
+line-height: 13px;
+color: #000000;
+align-self: flex-start;
+}
+
+.profile_update_input {
+    border: none;
+    text-align: end;
+    align-self: flex-end;
+}
+
+.profile_update_btn {
+    text-align: center;
+    border: none;
+    color: #000000;
+    background-color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.exit_account_btn {
+    border: none;
+    color: #FF4062;
+    background-color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+}
