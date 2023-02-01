@@ -6,7 +6,7 @@ import './Login.css';
 function Login() {
     return (
         <div className="login">
-            <div className="title">
+            <div className="lgn_page_title">
                 <img
                     className="header__logo"
                     src={logo}
@@ -15,34 +15,29 @@ function Login() {
                 <h1 className="login__title">Рады видеть!</h1>
             </div>
             <form className="login_form">
-                <p className="input_title">E-mail</p>
+                <label className="input_title">E-mail</label>
                 <input
                     className="input login_email-input"
                     // placeholder='Email'
                     id="email"
                     type="email"
                     name="email"
-                // onChange={handleChange}
-                // value={userData.email}
                 >
 
                 </input>
-                <p className="input_title">Пароль</p>
+                <label className="input_title">Пароль</label>
                 <input
                     className="input login_password-input"
                     id="password"
                     type="password"
                     name="password"
-                    // placeholder='Пароль'
-                // onChange={handleChange}
-                // value={userData.password}
+                // placeholder='Пароль'
                 ></input>
 
             </form>
-            <button className="login_button"
-                type="submit"
-            // onClick={submitChange}
-            >Войти</button>
+            <button
+                className="login_button"
+                type="submit">Войти</button>
             <div className="if-unregistered_line">
                 <p className="non-registered_line">Ещё не зарегистрированы? </p>
                 <Link to={'/signup'} className="login-to-register_link">Регистрация</Link>

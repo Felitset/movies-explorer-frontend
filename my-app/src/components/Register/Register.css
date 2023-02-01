@@ -18,11 +18,11 @@
     }
 }
 
-.title {
+.register__title {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin: 0 auto;
+    margin: 70px auto 0;
 }
 
 /* .header__logo {

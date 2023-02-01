@@ -9,45 +9,43 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Footer from '../Footer/Footer';
 import PageNotFound from '../PageNotFound/PageNotFound';
-// import './App.css';
 import '../../index.css';
 
 function App() {
     return (
         <>
             <div className="page">
-                {/* <Header /> */}
                 <Switch>
                     <Route path="/" exact>
-<Header />
-<Main />
-<Footer />
-    </Route>
-    <Route path="/movies">
-<Header />
-<Movies />
-<Footer />
-    </Route>
-    <Route path="/saved-movies">
-<Header />
-<SavedMovies />
-<Footer />
-    </Route>
-    <Route path="/profile">
-<Header />
-<Profile />
-    </Route>
-    <Route path="/404">
-        <PageNotFound />
-    </Route>
+                        <Header />
+                        <Main />
+                        <Footer />
+                    </Route>
+                    <Route path="/movies">
+                        <Header />
+                        <Movies />
+                        <Footer />
+                    </Route>
+                    <Route path="/saved-movies">
+                        <Header />
+                        <SavedMovies />
+                        <Footer />
+                    </Route>
+                    <Route path="/profile">
+                        <Header />
+                        <Profile />
+                    </Route>
+                    
                     <Route path="/signin">
                         <Login />
                     </Route>
                     <Route path="/signup">
                         <Register />
                     </Route>
+                    <Route path="*">
+                        <PageNotFound />
+                    </Route>
                 </Switch>
-                {/* <Footer /> */}
             </div>
         </>
 
