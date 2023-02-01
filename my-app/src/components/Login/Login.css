@@ -95,9 +95,6 @@
         margin: 221px auto 16px;
     }
 
-    .if-unregistered_line {
-        margin: 0 auto 223px;
-    }
 }
 
 @media screen and (max-width: 631px) {
