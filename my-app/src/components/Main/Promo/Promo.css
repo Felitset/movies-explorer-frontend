@@ -1,5 +1,7 @@
 .promo {
     background-color: #F3C1F8;
+    padding: 75px 70px;
+    position: relative;
 }
 
 .promo_title {
@@ -9,6 +11,8 @@
     font-size: 50px;
     line-height: 58px;
     color: #000000;
+    max-width: 640px;
+    margin: 0;
 }
 
 .promo_subtitle {
@@ -19,6 +23,8 @@
     line-height: 16px;
     color: #000000;
     opacity: 0.5;
+    max-width: 310px;
+    margin: 36px 0 156px;
 }
 
 .promo_btn {
@@ -33,4 +39,16 @@
     opacity: 0.6;
     border: 1px solid #000000;
     border-radius: 3px;
+    justify-content: center;
+    width: 129px;
+    height: 36px;
+    margin: 0;
+    padding: 0;
+}
+
+.promo_logo {
+    position: absolute;
+    top: 75.28px;
+    right: 70px;
+    width: 310px;
 }

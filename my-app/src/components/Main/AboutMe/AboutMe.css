@@ -1,5 +1,7 @@
 .aboutme {
     background-color: #FFFFFF;
+    padding: 110px 70px 106px;
+    position: relative;
 }
 
 .aboutme_title_block {
@@ -13,6 +15,7 @@
     font-weight: 400;
     font-size: 22px;
     line-height: 27px;
+    margin: 0 0 23px;
 }
 
 .aboutme_content {
@@ -28,6 +31,7 @@ font-size: 50px;
 line-height: 58px;
 
 color: #000000;
+margin: 66px 0 18px;
 }
 
 .aboutme_content_subtitle {
@@ -39,7 +43,7 @@ line-height: 20px;
 
 color: #000000;
 padding: 0;
-margin: 0;
+margin: 0 0 26px;
 }
 
 .aboutme_content_text {
@@ -50,6 +54,8 @@ font-size: 14px;
 line-height: 22px;
 
 color: #000000;
+max-width: 590px;
+margin: 0 0 99px;
 }
 
 .github_link {
@@ -60,10 +66,15 @@ font-size: 14px;
 line-height: 17px;
 text-decoration: none;
 color: #000000;
+width: 46px;
+margin: 0 0 101px;
 }
 
 .aboutme_photo {
     border-radius: 10px;
     width: 270px;
     height: 327px;
+    position: absolute;
+    right: 70px;
+    top: 227px;
 }

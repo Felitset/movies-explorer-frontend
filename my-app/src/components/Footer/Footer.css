@@ -1,3 +1,7 @@
+.footer {
+    padding: 79px 70px 20px;
+}
+
 .footer_content_block {
     border-bottom: 1px solid #E8E8E8;
     display: flex;
@@ -13,6 +17,7 @@ line-height: 16px;
 text-align: center;
 
 color: #A0A0A0;
+margin: 0 0 20px;
 }
 
 .footer_block {
@@ -27,11 +32,13 @@ font-weight: 400;
 font-size: 13px;
 line-height: 16px;
 color: #000000;
+margin: 20px 0 0;
 }
 
 .footer_links {
     display: flex;
     align-items: center;
+    margin: 20px 0 0;
 }
 
 .footer_link {
