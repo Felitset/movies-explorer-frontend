@@ -2,6 +2,8 @@
     background-color: #F9F9F9;
     display: flex;
     justify-content: space-between;
+    padding-left: 22px;
+    align-items: center;
 }
 
 .movie_card_info {
@@ -12,29 +14,36 @@
 
 .movie_title {
     font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-line-height: 22px;
-color: #000000;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
+    margin: 22px 0 0;
 }
 
 .movie_duration {
     font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 11px;
-line-height: 13px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
 
-color: #A0A0A0;
+    color: #A0A0A0;
+    margin: 13px 0 30px;
 }
 
 .movie_remove_from_list {
     width: 14px;
     height: 12px;
+    margin: 0 0 22px;
 }
 
 .movie_card_pic {
     width: 220px;
     height: 122px;
+}
+
+.blank_space {
+    height: 140px;
 }

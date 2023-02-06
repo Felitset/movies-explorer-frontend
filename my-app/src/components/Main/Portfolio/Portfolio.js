@@ -11,21 +11,24 @@ function Portfolio() {
                 <img
                     className='forward_btn'
                     src={arrowPict}
-                    alt='Стрелка для перехода на проект' />
+                    alt='Стрелка для перехода на проект' 
+                    onClick={() => window.open("https://github.com")}/>
             </div>
             <div className='portfolio_block'>
                 <h4 className='portfolio_block_title'>Адаптивный сайт</h4>
                 <img
                     className='forward_btn'
                     src={arrowPict}
-                    alt='Стрелка для перехода на проект' />
+                    alt='Стрелка для перехода на проект'
+                    onClick={() => window.open("https://github.com")}/>
             </div>
             <div className='portfolio_block'>
                 <h4 className='portfolio_block_title'>Одностраничное приложение</h4>
                 <img
                     className='forward_btn'
                     src={arrowPict}
-                    alt='Стрелка для перехода на проект' />
+                    alt='Стрелка для перехода на проект'
+                    onClick={() => window.open("https://github.com")}/>
             </div>
         </>
     )

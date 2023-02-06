@@ -9,6 +9,10 @@ function AboutMe() {
             <div className='aboutme_title_block'>
                 <h2 className='aboutme_title'>Студент</h2>
             </div>
+            <img
+                    className='aboutme_photo'
+                    src={studentPhoto}
+                    alt='Фото студента' />
             <div className='aboutme_content'>
                 <h3 className='aboutme_content_title'>Виталий</h3>
                 <p className='aboutme_content_subtitle'>Фронтенд-разработчик, 30 лет</p>
@@ -17,10 +21,7 @@ function AboutMe() {
                 С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, 
                 начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
                 <a href="https://github.com/Felitset" className='github_link'>Github</a>
-                <img
-                    className='aboutme_photo'
-                    src={studentPhoto}
-                    alt='Фото студента' />
+                
             </div>
             <Portfolio />
         </div>

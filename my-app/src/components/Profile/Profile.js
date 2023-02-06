@@ -10,7 +10,7 @@ function Profile() {
         <label className="input_label">Имя</label>
         <input className="profile_update_input" placeholder='Имя' title='Имя'></input>
         </span>
-        <span>
+        <span className='input_block'>
         <label className="input_label">E-mail</label>
         <input className="profile_update_input" placeholder='Email' title='E-mail'></input>
         </span>

@@ -3,7 +3,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 166px;
+    /* min-height: 166px; */
+
 }
 
 .expand_list_btn {
@@ -19,4 +20,5 @@ color: #000000;
 width: 320px;
 height: 36px;
 border: none;
+margin: 50px 0 80px;
 }

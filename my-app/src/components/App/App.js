@@ -7,8 +7,9 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
-import Footer from '../Footer/Footer';
+// import Footer from '../Footer/Footer';
 import PageNotFound from '../PageNotFound/PageNotFound';
+import NavTab from '../Main/NavTab/NavTab';
 import '../../index.css';
 
 function App() {
@@ -17,19 +18,19 @@ function App() {
             <div className="page">
                 <Switch>
                     <Route path="/" exact>
-                        <Header />
+                        {/* <Header /> */}
                         <Main />
-                        <Footer />
+
                     </Route>
                     <Route path="/movies">
                         <Header />
                         <Movies />
-                        <Footer />
+
                     </Route>
                     <Route path="/saved-movies">
                         <Header />
                         <SavedMovies />
-                        <Footer />
+
                     </Route>
                     <Route path="/profile">
                         <Header />
@@ -46,6 +47,7 @@ function App() {
                         <PageNotFound />
                     </Route>
                 </Switch>
+                <NavTab />
             </div>
         </>
 

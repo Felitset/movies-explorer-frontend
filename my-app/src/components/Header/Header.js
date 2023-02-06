@@ -8,41 +8,63 @@ import Navigation from '../Navigation/Navigation';
 function Header() {
     const { pathname } = useLocation();
     return (
-        <header className="header" >
+        <>
+            {pathname === '/movies' && 
+            <header className="header" >
 
             <img
                 className="header__logo"
                 src={logo}
                 alt="Логотип"
             />
-
-            {pathname === '/movies' && <>
                 <Navigation />
                 <img
                     className='profile_button'
                     src={profileBtn}
-                    alt="Аккаунт" /></>}
+                    alt="Аккаунт" /></header>}
 
-            {pathname === '/saved-movies' && <>
+            {pathname === '/saved-movies' && 
+            <header className="header" >
+
+            <img
+                className="header__logo"
+                src={logo}
+                alt="Логотип"
+            />
                 <Navigation />
                 <img
                     className='profile_button'
                     src={profileBtn}
-                    alt="Аккаунт" /></>}
+                    alt="Аккаунт" /></header>}
 
-            {pathname === '/profile' && <>
+            {pathname === '/profile' && 
+            <header className="header" >
+
+            <img
+                className="header__logo"
+                src={logo}
+                alt="Логотип"
+            />
                 <Navigation />
                 <img
                     className='profile_button'
                     src={profileBtn}
-                    alt="Аккаунт" /></>}
+                    alt="Аккаунт" /></header>}
 
-            {pathname === '/' && <div className="header-btns">
+            {pathname === '/' && 
+            <header className="header header_main-page" >
+
+            <img
+                className="header__logo"
+                src={logo}
+                alt="Логотип"
+            />
+            <div className="header-btns">
                 <Link to='/signup' className='registration-link'>Регистрация</Link>
                 <button className="login_btn" >Войти</button>
-            </div>}
-
-        </header>
+            </div>
+            </header>}
+            </>
     )
 }
 

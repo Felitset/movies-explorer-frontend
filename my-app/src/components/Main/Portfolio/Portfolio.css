@@ -21,16 +21,47 @@
 
 .portfolio_block_title {
     font-family: 'Inter', sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 30px;
-line-height: 50px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 50px;
 
-color: #000000;
-margin: 20px 0 19px;
+    color: #000000;
+    margin: 20px 0 19px;
 }
 
 .forward_btn {
     width: 29px;
     height: 100%;
+}
+
+.forward_btn:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1150px) { 
+    .forward_btn {
+        width: 27px;
+        height: 100%;
+    }
+
+    .portfolio_block_title {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 631px) {
+    .portfolio_title {
+        font-size: 14px;
+    }
+
+    .forward_btn {
+        width: 18px;
+        height: 100%;
+    }
+
+    .portfolio_block_title {
+        font-size: 18px;
+        line-height: 28px;
+        }
 }

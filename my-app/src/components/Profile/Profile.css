@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 626px;
+    padding-bottom: 70px;
 }
 
 .profile_greeting {
@@ -13,19 +13,26 @@
     font-size: 24px;
     line-height: 29px;
     text-align: center;
+    margin: 74px 0 123px;
 }
 
 .profile_update_form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: space-between; */
 }
 
-/* .input_block {
+.input_block {
     display: flex;
     justify-content: space-between;
-} */
+    width: 410px;
+    border-bottom: solid 1px #E8E8E8;
+    padding: 17px 0 16px;
+}
+
+.input_block:last-of-type {
+    border-bottom: none;
+}
 
 .input_label {
     font-family: 'Inter', sans-serif;
@@ -53,6 +60,7 @@ align-self: flex-start;
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
+    margin-top: 220px;
 }
 
 .exit_account_btn {
@@ -64,4 +72,5 @@ align-self: flex-start;
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
+    margin-top: 16px;
 }
