@@ -15,10 +15,9 @@ function Register() {
                 <h1 className="register__title">Добро пожаловать!</h1>
             </div>
             <form className="register_form">
-            <p className="input_title">Имя</p>
+                <p className="input_title">Имя</p>
                 <input
                     className="input register_name-input"
-                    // placeholder='Имя'
                     id="name"
                     type="name"
                     name="name"
@@ -28,12 +27,9 @@ function Register() {
                 <p className="input_title">E-mail</p>
                 <input
                     className="input register_email-input"
-                    // placeholder='Email'
                     id="email"
                     type="email"
                     name="email"
-                // onChange={handleChange}
-                // value={userData.email}
                 >
 
                 </input>
@@ -43,15 +39,11 @@ function Register() {
                     id="password"
                     type="password"
                     name="password"
-                    // placeholder='Пароль'
-                // onChange={handleChange}
-                // value={userData.password}
                 ></input>
 
             </form>
             <button className="register_button"
                 type="submit"
-            // onClick={submitChange}
             >Зарегистрироваться</button>
             <div className="if-registered_line">
                 <p className="registered_line">Уже зарегистрированы?</p>

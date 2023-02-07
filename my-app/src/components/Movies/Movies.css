@@ -19,6 +19,13 @@
     height: 36px;
     border: none;
     margin: 50px 0 80px;
+    transition: 0.4s ease-in-out;
+}
+
+.expand_list_btn:hover {
+    cursor: pointer;
+    background-color: #F3C1F8;
+    box-shadow: 1px 1px 20px;
 }
 
 @media screen and (max-width: 1150px) {

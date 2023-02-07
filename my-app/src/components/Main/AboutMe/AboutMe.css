@@ -1,4 +1,5 @@
 .aboutme {
+    font-family: 'Inter', sans-serif;
     background-color: #FFFFFF;
     padding: 110px 70px 106px;
     position: relative;
@@ -24,42 +25,35 @@
 }
 
 .aboutme_content_title {
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 50px;
     line-height: 58px;
-
     color: #000000;
     margin: 66px 0 18px;
 }
 
 .aboutme_content_subtitle {
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 20px;
-
     color: #000000;
     padding: 0;
     margin: 0 0 26px;
 }
 
 .aboutme_content_text {
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
-
     color: #000000;
     max-width: 590px;
     margin: 0 0 99px;
 }
 
 .github_link {
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -68,10 +62,14 @@
     color: #000000;
     width: 46px;
     margin: 0 0 101px;
+    transition: 0.6s ease-in-out;
 }
 
 .github_link:hover {
     cursor: pointer;
+    transform: scale(1.2);
+    background: #F3C1F8;
+    border-radius: 15px;
 }
 
 .aboutme_photo {

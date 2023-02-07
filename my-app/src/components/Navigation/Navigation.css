@@ -7,12 +7,24 @@
     color: #000000;
     font-weight: 500;
     margin-right: 16px;
+    transition: 0.4s;
+}
+
+.movie_page_link:hover {
+    cursor: pointer;
+    opacity: 0.6;
 }
 
 .saved_movies_page_link {
     text-decoration: none;
     color: #000000;
     font-weight: 400;
+    transition: 0.4s;
+}
+
+.saved_movies_page_link:hover {
+    cursor: pointer;
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 1150px) { 

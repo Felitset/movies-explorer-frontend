@@ -1,4 +1,5 @@
 .header {
+    font-family: 'Inter', sans-serif;
     background: #FFFFFF;
     display: flex;
     justify-content: space-between;
@@ -14,10 +15,14 @@
 .profile_button {
     width: 100px;
     height: 32px;
+    transition: 0.7s ease-in-out;
 }
 
 .profile_button:hover {
     cursor: pointer;
+    background-color: #F3C1F8;
+    border-radius: 15px;
+    transform: scale(1.2);
 }
 
 .header_main-page {
@@ -30,7 +35,6 @@
 }
 
 .registration-link {
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -38,10 +42,14 @@
     color: #000000;
     margin-right: 30px;
     text-decoration: none;
+    transition: 0.7s ease-in-out;
 }
 
 .registration-link:hover {
     cursor: pointer;
+    transform: scale(1.2);
+    box-shadow: 3px 3px 18px;
+    border-radius: 7px;
 }
 
 .login_btn {
@@ -55,22 +63,28 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-
     color: #FFFFFF;
+    transition: 0.6s ease-in-out;
 }
 
 .login_btn:hover {
     cursor: pointer;
+    border-radius: 15px;
+    transform: scale(1.1);
 }
 
 .menu_button {
     display: none;
     width: 44px;
     height: 44px;
+    transition: 0.7s ease-in-out;
 }
 
 .menu_button:hover {
     cursor: pointer;
+    transform: scale(1.1);
+    background-color: #F3C1F8;
+    border-radius: 50px;
 }
 
 @media screen and (max-width: 1150px) {

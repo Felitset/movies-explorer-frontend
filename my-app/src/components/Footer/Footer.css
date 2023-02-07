@@ -1,5 +1,6 @@
 .footer {
     padding: 79px 70px 20px;
+    font-family: 'Inter', sans-serif;
 }
 
 .footer_content_block {
@@ -9,15 +10,13 @@
 }
 
 .footer_content {
-    font-family: 'Inter', sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 13px;
-line-height: 16px;
-text-align: center;
-
-color: #A0A0A0;
-margin: 0 0 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #A0A0A0;
+    margin: 0 0 20px;
 }
 
 .footer_block {
@@ -26,13 +25,12 @@ margin: 0 0 20px;
 }
 
 .footer_year {
-    font-family: 'Inter', sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 13px;
-line-height: 16px;
-color: #000000;
-margin: 20px 0 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;
+    margin: 20px 0 0;
 }
 
 .footer_links {
@@ -42,14 +40,24 @@ margin: 20px 0 0;
 }
 
 .footer_link {
-    font-family: 'Inter', sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 13px;
-line-height: 16px;
-color: #000000;
-text-decoration: none;
-margin-left: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;
+    text-decoration: none;
+    margin-left: 20px;
+    opacity: 1;
+
+}
+
+.footer_link:hover {
+    cursor: pointer;
+    transition: 1.5s;
+    opacity: 0.6;
+    background-color: #F3C1F8;
+    border-radius: 6px;
+
 }
 
 @media screen and (max-width: 1150px) {
@@ -63,40 +71,39 @@ margin-left: 20px;
     .footer {
         padding: 79px 10px 20px;
     }
-    
+
     .footer_content {
-    font-size: 12px;
-    line-height: 15px;
-    margin: 0 0 21px;
+        font-size: 12px;
+        line-height: 15px;
+        margin: 0 0 21px;
     }
-    
+
     .footer_block {
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
-        /* justify-content: space-between; */
     }
-    
+
     .footer_year {
-    font-size: 12px;
-    line-height: 15px;
-    color: #A0A0A0;
-    margin: 30px 0 0;
+        font-size: 12px;
+        line-height: 15px;
+        color: #A0A0A0;
+        margin: 30px 0 0;
     }
-    
+
     .footer_links {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: 30px 0 0;
     }
-    
+
     .footer_link {
-    font-size: 12px;
-    line-height: 15px;
-    color: #000000;
-    margin-bottom: 12px;
-    margin-left: 0;
+        font-size: 12px;
+        line-height: 15px;
+        color: #000000;
+        margin-bottom: 12px;
+        margin-left: 0;
     }
 
     .footer_link:last-of-type {

@@ -18,7 +18,6 @@ function Login() {
                 <label className="input_title">E-mail</label>
                 <input
                     className="input login_email-input"
-                    // placeholder='Email'
                     id="email"
                     type="email"
                     name="email"
@@ -31,7 +30,6 @@ function Login() {
                     id="password"
                     type="password"
                     name="password"
-                // placeholder='Пароль'
                 ></input>
 
             </form>

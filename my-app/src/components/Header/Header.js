@@ -6,7 +6,7 @@ import menuBtn from '../../images/menu_pict.png';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
 
-function Header() {
+function Header(props) {
     const { pathname } = useLocation();
     return (
         <>
@@ -22,11 +22,13 @@ function Header() {
                     <img
                         className='profile_button'
                         src={profileBtn}
-                        alt="Аккаунт" />
+                        alt="Аккаунт"
+                        onClick={() => window.open("/profile")} />
                     <img
                         className='menu_button'
                         src={menuBtn}
-                        alt='Кнопка перехода в меню' />
+                        alt='Кнопка перехода в меню'
+                        onClick={props.onMenuOpen} />
                 </header>}
 
             {pathname === '/saved-movies' &&
@@ -41,11 +43,13 @@ function Header() {
                     <img
                         className='profile_button'
                         src={profileBtn}
-                        alt="Аккаунт" />
+                        alt="Аккаунт"
+                        onClick={() => window.open("/profile")} />
                     <img
                         className='menu_button'
                         src={menuBtn}
-                        alt='Кнопка перехода в меню' />
+                        alt='Кнопка перехода в меню'
+                        onClick={props.onMenuOpen} />
                 </header>}
 
             {pathname === '/profile' &&
@@ -60,11 +64,13 @@ function Header() {
                     <img
                         className='profile_button'
                         src={profileBtn}
-                        alt="Аккаунт" />
+                        alt="Аккаунт"
+                        onClick={() => window.open("/profile")} />
                     <img
                         className='menu_button'
                         src={menuBtn}
-                        alt='Кнопка перехода в меню' />
+                        alt='Кнопка перехода в меню'
+                        onClick={props.onMenuOpen} />
                 </header>}
 
             {pathname === '/' &&
@@ -77,7 +83,9 @@ function Header() {
                     />
                     <div className="header-btns">
                         <Link to='/signup' className='registration-link'>Регистрация</Link>
-                        <button className="login_btn" >Войти</button>
+                        <button
+                            className="login_btn"
+                            onClick={() => window.open("/signin")}>Войти</button>
                     </div>
                 </header>}
         </>

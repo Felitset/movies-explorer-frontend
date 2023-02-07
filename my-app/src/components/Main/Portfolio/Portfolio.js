@@ -11,8 +11,8 @@ function Portfolio() {
                 <img
                     className='forward_btn'
                     src={arrowPict}
-                    alt='Стрелка для перехода на проект' 
-                    onClick={() => window.open("https://github.com")}/>
+                    alt='Стрелка для перехода на проект'
+                    onClick={() => window.open("https://github.com/Felitset/how-to-learn")} />
             </div>
             <div className='portfolio_block'>
                 <h4 className='portfolio_block_title'>Адаптивный сайт</h4>
@@ -20,7 +20,7 @@ function Portfolio() {
                     className='forward_btn'
                     src={arrowPict}
                     alt='Стрелка для перехода на проект'
-                    onClick={() => window.open("https://github.com")}/>
+                    onClick={() => window.open("https://github.com/Felitset/russian-travel")} />
             </div>
             <div className='portfolio_block'>
                 <h4 className='portfolio_block_title'>Одностраничное приложение</h4>
@@ -28,7 +28,7 @@ function Portfolio() {
                     className='forward_btn'
                     src={arrowPict}
                     alt='Стрелка для перехода на проект'
-                    onClick={() => window.open("https://github.com")}/>
+                    onClick={() => window.open("https://github.com/Felitset/react-mesto-api-full")} />
             </div>
         </>
     )
