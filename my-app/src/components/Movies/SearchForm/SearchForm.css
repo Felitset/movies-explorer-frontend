@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: center;
     /* min-height: 247px; */
-   margin: 0;
+    margin: 0;
     align-items: center;
 }
 
@@ -26,7 +26,7 @@
     font-weight: 400;
     font-size: 13px;
     line-height: 17px;
-   
+
     width: 100%;
     height: 46px;
     padding-left: 22px;
@@ -44,8 +44,8 @@
 
 .search_filter {
     display: flex;
-justify-content: center;
-margin: 42px 0 70px;
+    justify-content: center;
+    margin: 42px 0 70px;
 }
 
 .filter {
@@ -55,10 +55,43 @@ margin: 42px 0 70px;
 
 .filter_name {
     font-family: 'Inter', sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 18px;
-color: #000000;
-margin-left: 12px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    margin-left: 12px;
+}
+
+@media screen and (max-width: 1150px) {
+    .search_form {
+        margin: 80px 30px 10px;
+
+    }
+
+    .search_filter {
+        margin: 42px 0 51px;
+    }
+
+}
+
+@media screen and (max-width: 631px) {
+    .search_form {
+        margin: 80px 14px 10px;
+
+    }
+
+    .search_input {
+        font-size: 11px;
+        padding-left: 19px;
+    }
+
+    .search_filter {
+        margin: 43px 0 50px;
+    }
+
+    .filter_name {
+        font-size: 11px;
+        margin-left: 13px;
+    }
 }

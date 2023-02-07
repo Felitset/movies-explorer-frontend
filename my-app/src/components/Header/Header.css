@@ -1,10 +1,9 @@
 .header {
     background: #FFFFFF;
-    height: 74px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 70px;
+    padding: 18px 70px;
 }
 
 .header__logo {
@@ -32,13 +31,13 @@
 
 .registration-link {
     font-family: 'Inter', sans-serif;
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 16px;
-color: #000000;
-margin-right: 30px;
-text-decoration: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #000000;
+    margin-right: 30px;
+    text-decoration: none;
 }
 
 .registration-link:hover {
@@ -52,14 +51,64 @@ text-decoration: none;
     width: 76px;
     height: 32px;
     font-family: 'Inter', sans-serif;
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 16px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
 
-color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 .login_btn:hover {
     cursor: pointer;
+}
+
+.menu_button {
+    display: none;
+    width: 44px;
+    height: 44px;
+}
+
+.menu_button:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1150px) {
+    .header {
+        padding: 18px 30px;
+
+    }
+
+    .profile_button {
+        display: none;
+    }
+
+    .menu_button {
+        display: block;
+    }
+
+}
+
+@media screen and (max-width: 631px) {
+    .header {
+        padding: 18px 14px;
+
+    }
+
+    .registration-link {
+        font-size: 10px;
+        margin-right: 14px;
+    }
+
+    .login_btn {
+        width: 54px;
+        height: 26px;
+        font-size: 10px;
+    }
+
+    .menu_button {
+        width: 40px;
+        height: 43px;
+    }
+
 }
