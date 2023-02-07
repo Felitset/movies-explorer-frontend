@@ -5,7 +5,7 @@
     position: relative;
 }
 
-.promo_title {
+.promo__title {
     font-style: normal;
     font-weight: 400;
     font-size: 50px;
@@ -15,7 +15,7 @@
     margin: 0;
 }
 
-.promo_subtitle {
+.promo__subtitle {
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
@@ -26,7 +26,7 @@
     margin: 36px 0 156px;
 }
 
-.promo_btn {
+.promo__btn {
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -45,13 +45,13 @@
     transition: 0.6s ease-in-out;
 }
 
-.promo_btn:hover {
+.promo__btn:hover {
     cursor: pointer;
     transform: scale(1.1);
     box-shadow: 12px 12px 30px;
 }
 
-.promo_logo {
+.promo__logo {
     position: absolute;
     top: 75.28px;
     right: 70px;
@@ -67,7 +67,7 @@
         align-items: center;
     }
     
-    .promo_title {
+    .promo__title {
         font-size: 40px;
         line-height: 50px;
         margin-top: 48px;
@@ -75,13 +75,13 @@
         /* max-width: 680px; */
     }
     
-    .promo_subtitle {
+    .promo__subtitle {
         max-width: 260px;
         margin: 22px 0 92px;
         text-align: center;
     }
     
-    .promo_logo {
+    .promo__logo {
         position: inherit;
     }
 
@@ -92,17 +92,17 @@
         padding: 70px 10px 30px;
     }
     
-    .promo_title {
+    .promo__title {
         font-size: 28px;
         line-height: 38px;
         margin-top: 44px;
     }
     
-    .promo_subtitle {
+    .promo__subtitle {
         margin: 22px 0 92px;
     }
     
-    .promo_logo {
+    .promo__logo {
         width: 210px;
     }
     

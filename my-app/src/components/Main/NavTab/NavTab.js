@@ -8,20 +8,33 @@ function NavTab(props) {
 
     return (
         <div className={props.isOpen ? 'nav-tab_open' : 'nav-tab'}>
-            <img
-                className='nav-tab_close_btn'
-                src={closeBtn}
-                alt='Кнопка закрытия'
-                onClick={props.onClose} />
-            <div className="nav-tab_menu">
-                <Link className='nav-tab_menu_link' to="/">Главная</Link>
-                <Link className='nav-tab_menu_link' to="/movies">Фильмы</Link>
-                <Link className='nav-tab_menu_link' to="/saved-movies">Сораненные фильмы</Link>
+            <div className='nav-tab__body'>
+                <div className='nav-tab__content'>
+                    <img
+                        className='nav-tab__close_btn'
+                        src={closeBtn}
+                        alt='Кнопка закрытия'
+                        onClick={props.onClose} />
+                    <div className="nav-tab__menu">
+                        <Link
+                            className='nav-tab__menu_link'
+                            to="/"
+                            onClick={props.onClose}>Главная</Link>
+                        <Link
+                            className='nav-tab__menu_link'
+                            to="/movies"
+                            onClick={props.onClose}>Фильмы</Link>
+                        <Link
+                            className='nav-tab__menu_link'
+                            to="/saved-movies"
+                            onClick={props.onClose}>Сораненные фильмы</Link>
+                    </div>
+                    <img
+                        className='nav-tab__profile_btn'
+                        src={profileBtn}
+                        alt='Кнопка перехода на страцицу профиля' />
+                </div>
             </div>
-            <img
-                className='nav-tab_profile_btn'
-                src={profileBtn}
-                alt='Кнопка перехода на страцицу профиля' />
         </div>
     )
 }

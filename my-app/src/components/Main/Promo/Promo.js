@@ -6,13 +6,13 @@ function Promo() {
     return (
         <div className='promo'>
             <img
-                className='promo_logo'
+                className='promo__logo'
                 src={promoLogo}
                 alt='Логотип' />
-            <h1 className='promo_title'>Учебный проект студента факультета Веб-разработки.</h1>
-            <p className='promo_subtitle'>Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
+            <h1 className='promo__title'>Учебный проект студента факультета Веб-разработки.</h1>
+            <p className='promo__subtitle'>Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
             <button
-                className='promo_btn'
+                className='promo__btn'
                 onClick={() => window.open("https://practicum.yandex.ru/")}>Узнать больше</button>
 
         </div>

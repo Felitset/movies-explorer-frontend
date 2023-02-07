@@ -23,7 +23,7 @@
     color: #000000;
 }
 
-.register_form {
+.register__form {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -70,7 +70,7 @@
     opacity: 0.8;
 }
 
-.register_button {
+.register__button {
     width: 396px;
     height: 45px;
     color: #FFFFFF;
@@ -83,7 +83,7 @@
     transition: 0.7s ease-in-out;
 }
 
-.register_button:hover {
+.register__button:hover {
     cursor: pointer;
     background: #F3C1F8;
     color: #000000;
@@ -99,7 +99,7 @@
         margin: 232px auto 0;
     }
 
-    .register_button {
+    .register__button {
 
         margin: 152px auto 16px;
     }
@@ -123,7 +123,7 @@
         margin: 50px auto 80px;
     }
 
-    .register_form {
+    .register__form {
         min-width: 260px;
     }
 
@@ -131,7 +131,7 @@
         margin: 0 auto 30px;
     }
 
-    .register_button {
+    .register__button {
         width: 260px;
         font-size: 12px;
         margin: 240px auto 14px;

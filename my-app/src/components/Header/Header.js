@@ -20,12 +20,12 @@ function Header(props) {
                     />
                     <Navigation />
                     <img
-                        className='profile_button'
+                        className='header__profile_button'
                         src={profileBtn}
                         alt="Аккаунт"
                         onClick={() => window.open("/profile")} />
                     <img
-                        className='menu_button'
+                        className='header__menu_button'
                         src={menuBtn}
                         alt='Кнопка перехода в меню'
                         onClick={props.onMenuOpen} />
@@ -41,12 +41,12 @@ function Header(props) {
                     />
                     <Navigation />
                     <img
-                        className='profile_button'
+                        className='header__profile_button'
                         src={profileBtn}
                         alt="Аккаунт"
                         onClick={() => window.open("/profile")} />
                     <img
-                        className='menu_button'
+                        className='header__menu_button'
                         src={menuBtn}
                         alt='Кнопка перехода в меню'
                         onClick={props.onMenuOpen} />
@@ -62,29 +62,29 @@ function Header(props) {
                     />
                     <Navigation />
                     <img
-                        className='profile_button'
+                        className='header__profile_button'
                         src={profileBtn}
                         alt="Аккаунт"
                         onClick={() => window.open("/profile")} />
                     <img
-                        className='menu_button'
+                        className='header__menu_button'
                         src={menuBtn}
                         alt='Кнопка перехода в меню'
                         onClick={props.onMenuOpen} />
                 </header>}
 
             {pathname === '/' &&
-                <header className="header header_main-page" >
+                <header className="header header__main-page" >
 
                     <img
                         className="header__logo"
                         src={logo}
                         alt="Логотип"
                     />
-                    <div className="header-btns">
-                        <Link to='/signup' className='registration-link'>Регистрация</Link>
+                    <div className="header__btns">
+                        <Link to='/signup' className='header__btns_registration-link'>Регистрация</Link>
                         <button
-                            className="login_btn"
+                            className="header__btns_login_btn"
                             onClick={() => window.open("/signin")}>Войти</button>
                     </div>
                 </header>}

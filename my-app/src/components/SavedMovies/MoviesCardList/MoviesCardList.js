@@ -25,7 +25,7 @@ function MoviesCardList() {
                         moviePic={catchingBanksy} />
                 </li>
             </ul>
-            <div className="blank_space"></div>
+            <div className="movies__blank_space"></div>
         </>
     )
 }

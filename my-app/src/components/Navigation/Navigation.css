@@ -2,7 +2,7 @@
     display: block;
 }
 
-.movie_page_link {
+.navigation__movies_link {
     text-decoration: none;
     color: #000000;
     font-weight: 500;
@@ -10,19 +10,19 @@
     transition: 0.4s;
 }
 
-.movie_page_link:hover {
+.navigation__movies_link:hover {
     cursor: pointer;
     opacity: 0.6;
 }
 
-.saved_movies_page_link {
+.navigation__saved_movies_link {
     text-decoration: none;
     color: #000000;
     font-weight: 400;
     transition: 0.4s;
 }
 
-.saved_movies_page_link:hover {
+.navigation__saved_movies_link:hover {
     cursor: pointer;
     opacity: 0.6;
 }

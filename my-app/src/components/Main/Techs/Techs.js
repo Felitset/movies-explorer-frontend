@@ -3,24 +3,24 @@ import './Techs.css';
 
 function Techs() {
     return (
-<div className='techs'>
-            <div className="techs_title-block">
-                <h1 className="techs_title">Технологии</h1>
+        <div className='techs'>
+            <div className="techs__title">
+                <h1 className="techs__title_block">Технологии</h1>
             </div>
-            <div className='techs_content'>
-                <h2 className='content_title'>7 технологий</h2>
-                <p className='content_discription'>
-                На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.
+            <div className='techs__content'>
+                <h2 className='techs__content_title'>7 технологий</h2>
+                <p className='techs__content_discription'>
+                    На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.
                 </p>
             </div>
-            <div className='techs_blocks'>
-            <div className='tech_block'>HTML</div>
-            <div className='tech_block'>CSS</div>
-            <div className='tech_block'>JS</div>
-            <div className='tech_block'>React</div>
-            <div className='tech_block'>Git</div>
-            <div className='tech_block'>Express.js</div>
-            <div className='tech_block'>mongoDB</div>
+            <div className='techs__blocks'>
+                <div className='techs__blocks_element'>HTML</div>
+                <div className='techs__blocks_element'>CSS</div>
+                <div className='techs__blocks_element'>JS</div>
+                <div className='techs__blocks_element'>React</div>
+                <div className='techs__blocks_element'>Git</div>
+                <div className='techs__blocks_element'>Express.js</div>
+                <div className='techs__blocks_element'>mongoDB</div>
             </div>
         </div>
     )

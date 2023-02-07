@@ -3,11 +3,11 @@
 padding: 100px 70px;
 }
 
-.techs_title-block {
+.techs__title {
     border-bottom: 1px solid #000000;
 }
 
-.techs_title {
+.techs__title_block {
     color: #000000;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -17,13 +17,13 @@ padding: 100px 70px;
     margin: 0 0 23px;
 }
 
-.techs_content {
+.techs__content {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.content_title {
+.techs__content_title {
     color: #000000;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -36,7 +36,7 @@ padding: 100px 70px;
     margin: 90px 0 26px;
 }
 
-.content_discription {
+.techs__content_discription {
     color: #000000;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -49,13 +49,13 @@ padding: 100px 70px;
     max-width: 500px;
 }
 
-.techs_blocks {
+.techs__blocks {
     display: flex;
     justify-content: space-between;
     padding: 0 225px;
 }
 
-.tech_block {
+.techs__blocks_element {
     background-color: #E8E8E8;
     width: 90px;
     height: 60px;
@@ -78,22 +78,22 @@ padding: 100px 70px;
     padding: 90px 50px;
     }
 
-    .content_title {
+    .techs__content_title {
         margin: 80px 0 22px;
     }
     
-    .content_discription {
+    .techs__content_discription {
         font-size: 12px;
         line-height: 18px;
         margin: 0 0 83px;
         max-width: 460px;
     }
     
-    .techs_blocks {
+    .techs__blocks {
         padding: 0 10px;
     }
     
-    .tech_block {
+    .techs__blocks_element {
         width: 84px;
         height: 57px;
         font-size: 12px;
@@ -108,39 +108,38 @@ padding: 100px 70px;
     padding: 70px 18px;
     }
 
-    .techs_title {
+    .techs__title_block {
         font-size: 18px;
         line-height: 22px;
         margin: 0 0 28px;
     }
 
-    .content_title {
+    .techs__content_title {
         font-size: 30px;
         line-height: 36px;
         margin: 60px 0 24px;
     }
     
-    .content_discription {
+    .techs__content_discription {
         font-size: 11px;
         line-height: 16px;
         margin: 0 0 50px;
         max-width: 292px;
     }
     
-    .techs_blocks {
+    .techs__blocks {
         display: flex;
         flex-wrap: wrap;
-        /* justify-content: space-around; */
         padding: 0 50px;
     }
     
-    .tech_block {
+    .techs__blocks_element {
         font-size: 12px;
         line-height: 15px;
         margin: 0 10px 10px 0;
     }
 
-    .tech_block:nth-child(2n) {
+    .techs__blocks_element:nth-child(2n) {
         margin-right: 0;
     }
 

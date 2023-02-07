@@ -5,11 +5,11 @@
     position: relative;
 }
 
-.aboutme_title_block {
+.aboutme__title {
     border-bottom: 1px solid #000000;
 }
 
-.aboutme_title {
+.aboutme__title_block {
     color: #000000;
     font-family: 'Inter';
     font-style: normal;
@@ -19,12 +19,12 @@
     margin: 0 0 23px;
 }
 
-.aboutme_content {
+.aboutme__content {
     display: flex;
     flex-direction: column;
 }
 
-.aboutme_content_title {
+.aboutme__content_title {
     font-style: normal;
     font-weight: 400;
     font-size: 50px;
@@ -33,7 +33,7 @@
     margin: 66px 0 18px;
 }
 
-.aboutme_content_subtitle {
+.aboutme__content_subtitle {
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -43,7 +43,7 @@
     margin: 0 0 26px;
 }
 
-.aboutme_content_text {
+.aboutme__content_text {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -53,7 +53,7 @@
     margin: 0 0 99px;
 }
 
-.github_link {
+.github__link {
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -65,14 +65,14 @@
     transition: 0.6s ease-in-out;
 }
 
-.github_link:hover {
+.github__link:hover {
     cursor: pointer;
     transform: scale(1.2);
     background: #F3C1F8;
     border-radius: 15px;
 }
 
-.aboutme_photo {
+.aboutme__photo {
     border-radius: 10px;
     width: 270px;
     height: 327px;
@@ -86,30 +86,30 @@
         padding: 90px 50px 90px;
     }
 
-    .aboutme_content_title {
+    .aboutme__content_title {
         font-size: 40px;
         line-height: 40px;
         margin: 66px 0 16px;
     }
 
-    .aboutme_content_subtitle {
+    .aboutme__content_subtitle {
         font-size: 12px;
         line-height: 18px;
         margin: 0 0 20px;
     }
 
-    .aboutme_content_text {
+    .aboutme__content_text {
         font-size: 12px;
         line-height: 18px;
         max-width: 360px;
         margin: 0 0 87px;
     }
 
-    .github_link {
+    .github__link {
         margin: 0 0 91px;
     }
 
-    .aboutme_photo {
+    .aboutme__photo {
         width: 255px;
         height: 307px;
         right: 50px;
@@ -125,36 +125,36 @@
         flex-direction: column;
     }
 
-    .aboutme_title {
+    .aboutme__title_block {
         font-size: 18px;
         line-height: 22px;
         margin: 0 0 28px;
     }
 
-    .aboutme_content_title {
+    .aboutme__content_title {
         font-size: 30px;
         line-height: 36px;
         margin: 40px 0 20px;
     }
 
-    .aboutme_content_subtitle {
+    .aboutme__content_subtitle {
         font-size: 11px;
         line-height: 16px;
         margin: 0 0 20px;
     }
 
-    .aboutme_content_text {
+    .aboutme__content_text {
         font-size: 11px;
         line-height: 16px;
         max-width: 292px;
         margin: 0 0 40px;
     }
 
-    .github_link {
+    .github__link {
         margin: 0 0 70px;
     }
 
-    .aboutme_photo {
+    .aboutme__photo {
         position: inherit;
         width: 292px;
         height: 352px;

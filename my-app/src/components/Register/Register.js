@@ -14,25 +14,21 @@ function Register() {
                 />
                 <h1 className="register__title">Добро пожаловать!</h1>
             </div>
-            <form className="register_form">
+            <form className="register__form">
                 <p className="input_title">Имя</p>
                 <input
                     className="input register_name-input"
                     id="name"
                     type="name"
                     name="name"
-                >
-
-                </input>
+                ></input>
                 <p className="input_title">E-mail</p>
                 <input
                     className="input register_email-input"
                     id="email"
                     type="email"
                     name="email"
-                >
-
-                </input>
+                ></input>
                 <p className="input_title">Пароль</p>
                 <input
                     className="input register_password-input"
@@ -40,9 +36,8 @@ function Register() {
                     type="password"
                     name="password"
                 ></input>
-
             </form>
-            <button className="register_button"
+            <button className="register__button"
                 type="submit"
             >Зарегистрироваться</button>
             <div className="if-registered_line">

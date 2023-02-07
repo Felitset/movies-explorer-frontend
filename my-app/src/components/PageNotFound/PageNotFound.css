@@ -1,4 +1,4 @@
-.page-not-found {
+.page_not_found {
     background: #FFFFFF;
     height: 100%;
     display: flex;
@@ -6,7 +6,7 @@
     margin: 0 auto;
 }
 
-.error-code {
+.page_not_found__error_code {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -17,7 +17,7 @@
     width: 400px;
 }
 
-.text-line {
+.page_not_found__text_line {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -28,7 +28,7 @@
 
 }
 
-.return-link {
+.page_not_found__return_link {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -39,36 +39,36 @@
     transition: 0.4s;
 }
 
-.return-link:hover {
+.page_not_found__return_link:hover {
     cursor: pointer;
     color: #F3C1F8;
     transform: scale(1.2);
 }
 
 @media screen and (max-width: 1150px) {
-    .error-code {
+    .page_not_found__error_code {
         margin: 408px auto 0;
     }
 
-    .return-link {
+    .page_not_found__return_link {
         margin: 0 auto 222px;
 
     }
 }
 
 @media screen and (max-width: 631px) {
-    .error-code {
+    .page_not_found__error_code {
         margin: 329px auto 0;
         width: 300px;
     }
 
-    .text-line {
+    .page_not_found__text_line {
         font-size: 12px;
         line-height: 15px;
         margin: 10px auto 284px;
     }
 
-    .return-link {
+    .page_not_found__return_link {
         font-size: 12px;
         margin: 0 auto 30px;
 
