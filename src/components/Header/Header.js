@@ -17,6 +17,7 @@ function Header(props) {
                         className="header__logo"
                         src={logo}
                         alt="Логотип"
+                        onClick={() => window.open("/")} 
                     />
                     <Navigation />
                     <img
@@ -38,6 +39,7 @@ function Header(props) {
                         className="header__logo"
                         src={logo}
                         alt="Логотип"
+                        onClick={() => window.open("/")} 
                     />
                     <Navigation />
                     <img
@@ -59,6 +61,7 @@ function Header(props) {
                         className="header__logo"
                         src={logo}
                         alt="Логотип"
+                        onClick={() => window.open("/")} 
                     />
                     <Navigation />
                     <img
@@ -80,6 +83,7 @@ function Header(props) {
                         className="header__logo"
                         src={logo}
                         alt="Логотип"
+                        onClick={() => window.open("/")} 
                     />
                     <div className="header__btns">
                         <Link to='/signup' className='header__btns_registration-link'>Регистрация</Link>

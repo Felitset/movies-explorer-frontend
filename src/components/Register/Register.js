@@ -11,6 +11,7 @@ function Register() {
                     className="header__logo"
                     src={logo}
                     alt="Логотип"
+                    onClick={() => window.open("/")} 
                 />
                 <h1 className="register__title">Добро пожаловать!</h1>
             </div>

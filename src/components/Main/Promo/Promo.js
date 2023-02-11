@@ -4,7 +4,7 @@ import './Promo.css';
 
 function Promo() {
     return (
-        <div className='promo'>
+        <div className='promo main__promo'>
             <img
                 className='promo__logo'
                 src={promoLogo}

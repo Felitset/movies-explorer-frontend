@@ -4,7 +4,7 @@ import smalltumbOn from '../../../images/smalltumb_on.png';
 
 function SearchForm() {
     return (
-        <div className='search_form'>
+        <div className='search_form movies__search_form'>
 
             <div className="search_form__input">
                 <input

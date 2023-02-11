@@ -11,6 +11,7 @@ function Login() {
                     className="header__logo"
                     src={logo}
                     alt="Логотип"
+                    onClick={() => window.open("/")} 
                 />
                 <h1 className="login__title">Рады видеть!</h1>
             </div>

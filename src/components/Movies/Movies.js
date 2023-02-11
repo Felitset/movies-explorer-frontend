@@ -8,12 +8,14 @@ import Footer from '../Footer/Footer';
 function Movies() {
     return (
         <>
-            <SearchForm />
-            {/* <Preloader /> */}
-            <MoviesCardList />
-            <div className='expand_list'>
-                <button className='expand_list_btn'>Ещё</button>
-            </div>
+            <main className="page__movies">
+                <SearchForm />
+                {/* <Preloader /> */}
+                <MoviesCardList />
+                <div className='expand_list'>
+                    <button className='expand_list_btn'>Ещё</button>
+                </div>
+            </main>
             <Footer />
         </>
     )

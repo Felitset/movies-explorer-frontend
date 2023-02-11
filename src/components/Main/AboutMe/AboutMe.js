@@ -5,7 +5,7 @@ import Portfolio from "../Portfolio/Portfolio";
 
 function AboutMe() {
     return (
-        <div className='aboutme'>
+        <div className='aboutme main__aboutme'>
             <div className='aboutme__title'>
                 <h2 className='aboutme__title_block'>Студент</h2>
             </div>
