@@ -23,7 +23,7 @@
     color: #000000;
     opacity: 0.5;
     max-width: 310px;
-    margin: 36px 0 156px;
+    margin: 36px 0 146px;
 }
 
 .promo__btn {
@@ -99,7 +99,7 @@
     }
     
     .promo__subtitle {
-        margin: 22px 0 92px;
+        margin: 22px 0 80px;
     }
     
     .promo__logo {

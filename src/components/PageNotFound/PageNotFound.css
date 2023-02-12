@@ -60,6 +60,8 @@
     .page_not_found__error_code {
         margin: 329px auto 0;
         width: 300px;
+        font-size: 80px;
+line-height: 97px;
     }
 
     .page_not_found__text_line {

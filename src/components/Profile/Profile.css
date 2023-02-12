@@ -30,8 +30,13 @@
     padding: 17px 0 16px;
 }
 
+.profile__input_block:first-of-type {
+    padding: 0 0 16px;
+}
+
 .profile__input_block:last-of-type {
     border-bottom: none;
+    padding: 17px 0 0;
 }
 
 .profile__input_label {
@@ -63,6 +68,7 @@
     font-size: 13px;
     line-height: 16px;
     margin-top: 220px;
+    padding: 0;
 }
 
 .profile__exit_btn {
@@ -75,6 +81,7 @@
     font-size: 13px;
     line-height: 16px;
     margin-top: 16px;
+    padding: 0;
 }
 
 @media screen and (max-width: 1150px) {

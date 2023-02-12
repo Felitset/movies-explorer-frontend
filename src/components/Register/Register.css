@@ -79,7 +79,7 @@
     background: #000000;
     border-radius: 3px;
     border: none;
-    margin: 221px auto 16px;
+    margin: 134px auto 16px;
     transition: 0.7s ease-in-out;
 }
 
@@ -98,10 +98,8 @@
     .title {
         margin: 232px auto 0;
     }
-
     .register__button {
-
-        margin: 152px auto 16px;
+        margin: 129px auto 16px;
     }
 
 }
@@ -134,7 +132,7 @@
     .register__button {
         width: 260px;
         font-size: 12px;
-        margin: 240px auto 14px;
+        margin: 222px auto 14px;
     }
 
     .registered_line {
