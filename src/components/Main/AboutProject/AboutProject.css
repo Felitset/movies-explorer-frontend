@@ -160,13 +160,13 @@
         padding: 70px 18px;
     }
 
-    .about_project__title {
+    .about_project__title_block {
         font-size: 18px;
         line-height: 22px;
         margin: 0 0 28px 0;
     }
 
-    .about_project__content_block {
+    .about_project__content {
         display: flex;
         flex-direction: column;
         padding: 60px 0;
@@ -185,10 +185,11 @@
     .block_item {
         max-width: 284px;
         margin-bottom: 56px;
+        margin-right: 0;
     }
 
     .block_item:last-child {
-        margin-right: 0;
+        margin-bottom: 0;
     }
 
 
@@ -206,7 +207,7 @@
 
     .duration_scale {
         grid-template-columns: 33% 67%;
-        grid-template-rows: 35px 35px;
+        grid-template-rows: 35px 23px;
     }
 
     .backend_duration {

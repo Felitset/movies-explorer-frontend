@@ -143,4 +143,8 @@ padding: 100px 70px;
         margin-right: 0;
     }
 
+    .techs__blocks_element:last-of-type {
+        margin-bottom: 0;
+    }
+
 }

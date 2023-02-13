@@ -44,6 +44,10 @@
     margin-bottom: 24px;
 }
 
+.input:last-of-type {
+    margin-bottom: 0;
+}
+
 .if-registered_line {
     display: flex;
     margin: 0 auto 70px;
@@ -132,7 +136,7 @@
     .register__button {
         width: 260px;
         font-size: 12px;
-        margin: 222px auto 14px;
+        margin: 240px auto 14px;
     }
 
     .registered_line {

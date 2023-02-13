@@ -20,7 +20,7 @@ function AboutMe() {
                     У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить.
                     С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке,
                     начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
-                <a href="https://github.com/Felitset" className='github__link'>Github</a>
+                <a href="https://github.com/Felitset" className='github__link' target="_blank">Github</a>
 
             </div>
             <Portfolio />
