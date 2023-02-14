@@ -1,9 +1,9 @@
-.register {
+.page__register {
     background: #FFFFFF;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', 'Arial', sans-serif;
 }
 
 .title {

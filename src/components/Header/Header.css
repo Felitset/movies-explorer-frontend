@@ -1,16 +1,23 @@
+.page__header {
+    font-family: 'Inter', 'Arial', sans-serif;
+    padding: 18px 70px;
+}
+
 .header {
-    font-family: 'Inter', sans-serif;
     background: #FFFFFF;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 70px;
     border: none;
 }
 
 .header__logo {
     width: 38px;
     height: 38px;
+}
+
+.header__logo:hover {
+    cursor: pointer;
 }
 
 .header__profile_button {
@@ -60,7 +67,6 @@
     border: none;
     width: 76px;
     height: 32px;
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -90,7 +96,7 @@
 }
 
 @media screen and (max-width: 1150px) {
-    .header {
+    .page__header {
         padding: 18px 30px;
 
     }
@@ -106,7 +112,7 @@
 }
 
 @media screen and (max-width: 631px) {
-    .header {
+    .page__header {
         padding: 18px 14px;
 
     }

@@ -1,6 +1,6 @@
-.footer {
+.page__footer {
     padding: 79px 70px 20px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', 'Arial', sans-serif;
 }
 
 .footer__content {
@@ -61,14 +61,14 @@
 }
 
 @media screen and (max-width: 1150px) {
-    .footer {
+    .page__footer {
         padding: 79px 30px 20px;
     }
 
 }
 
 @media screen and (max-width: 631px) {
-    .footer {
+    .page__footer {
         padding: 79px 10px 20px;
     }
 

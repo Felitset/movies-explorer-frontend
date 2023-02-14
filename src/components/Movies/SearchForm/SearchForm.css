@@ -4,7 +4,7 @@
     flex-direction: column;
     border-bottom: 1px solid #E8E8E8;
     margin: 60px 70px 10px;
-
+    font-family: 'Inter', 'Arial', sans-serif;
 }
 
 .search_form__input {
@@ -21,7 +21,6 @@
 .search_input {
     background: transparent;
     border: none;
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;

@@ -5,7 +5,7 @@ import arrowPict from '../../../images/arrow_pictogram.png';
 function Portfolio() {
     return (
         <>
-            <h3 className="portfolio__title">Портфолио</h3>
+            <h3 className="aboutme__portfolio__title portfolio__title">Портфолио</h3>
             <div className='portfolio__block'>
                 <h4 className='portfolio__block_title'>Статичный сайт</h4>
                 <img

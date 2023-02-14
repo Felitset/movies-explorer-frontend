@@ -1,4 +1,4 @@
-.movies_card_list {
+.movies__card_list {
     list-style-type: none;
     background-color: #FFFFFF;
     display: flex;
@@ -8,26 +8,26 @@
     margin: 0;
 }
 
-.movies_card {
+.movies__card {
     margin-bottom: 40px;
 }
 
-.movies_card:last-child {
+.movies__card:last-child {
     margin-bottom: 0;
 }
 
 @media screen and (max-width: 1150px) {
-    .movies_card_list {
+    .movies__card_list {
         padding: 60px 30px 30px;
     }
 }
 
 @media screen and (max-width: 631px) {
-    .movies_card_list {
+    .movies__card_list {
         padding: 40px 10px 20px;
     }
 
-    .movies_card {
+    .movies__card {
         margin-bottom: 20px;
     }
 

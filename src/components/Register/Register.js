@@ -5,7 +5,7 @@ import './Register.css';
 
 function Register() {
     return (
-        <div className="register">
+        <main className="page__register register">
             <div className="title">
                 <img
                     className="header__logo"
@@ -45,7 +45,7 @@ function Register() {
                 <p className="registered_line">Уже зарегистрированы?</p>
                 <Link to='/signin' className="register-to-login_link">Войти</Link>
             </div>
-        </div>
+        </main>
     )
 }
 

@@ -1,6 +1,7 @@
 .about_project {
     background-color: #FFFFFF;
     padding: 110px 70px;
+    font-family: 'Inter', 'Arial', sans-serif;
 }
 
 .about_project__title {
@@ -9,7 +10,6 @@
 
 .about_project__title_block {
     color: #000000;
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 22px;
@@ -42,7 +42,6 @@
 
 
 .block_item_subtitle {
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -52,7 +51,6 @@
 }
 
 .block_item_subititle_discription {
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -72,7 +70,6 @@
 .backend_duration {
     background-color: #000000;
     color: #FFFFFF;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -89,7 +86,6 @@
 .frontend_duration {
     background-color: #F2F2F2;
     color: #000000;
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -105,7 +101,6 @@
 
 .backend_text {
     color: #A0A0A0;
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -119,7 +114,6 @@
 
 .frontend_text {
     color: #A0A0A0;
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;

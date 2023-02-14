@@ -1,6 +1,7 @@
 .techs {
     background-color: #F5F5F5;
 padding: 100px 70px;
+font-family: 'Inter', 'Arial', sans-serif;
 }
 
 .techs__title {
@@ -9,7 +10,6 @@ padding: 100px 70px;
 
 .techs__title_block {
     color: #000000;
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 22px;
@@ -25,7 +25,6 @@ padding: 100px 70px;
 
 .techs__content_title {
     color: #000000;
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 50px;
@@ -38,7 +37,6 @@ padding: 100px 70px;
 
 .techs__content_discription {
     color: #000000;
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -61,7 +59,6 @@ padding: 100px 70px;
     height: 60px;
     border-radius: 10px;
     color: #000000;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;

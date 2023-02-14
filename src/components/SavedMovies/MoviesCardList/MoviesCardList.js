@@ -7,26 +7,26 @@ import catchingBanksy from '../../../images/catching_Banksy.png';
 
 function MoviesCardList() {
     return (
-        <>
-            <ul className="movies_card_list">
-                <li className='movies_card'>
+        <section className='main__saved_movies saved_movies'>
+            <ul className="saved_movies__card_list">
+                <li className='saved_movies__card'>
                     <MoviesCard
                         movieTitle='33 слова о дизайне'
                         moviePic={aboutDesign} />
                 </li>
-                <li className='movies_card'>
+                <li className='saved_movies__card'>
                     <MoviesCard
                         movieTitle='Киноальманах «100 лет дизайна»'
                         moviePic={hundredYears} />
                 </li>
-                <li className='movies_card'>
+                <li className='saved_movies__card'>
                     <MoviesCard
                         movieTitle='В погоне за Бенкси'
                         moviePic={catchingBanksy} />
                 </li>
             </ul>
-            <div className="movies__blank_space"></div>
-        </>
+            <div className="saved_movies__blank_space"></div>
+        </section>
     )
 }
 

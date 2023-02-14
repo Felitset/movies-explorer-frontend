@@ -4,10 +4,10 @@
     align-items: center;
     justify-content: center;
     padding-bottom: 70px;
+    font-family: 'Inter', 'Arial', sans-serif;
 }
 
 .profile__greeting {
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
@@ -40,7 +40,6 @@
 }
 
 .profile__input_label {
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 11px;
@@ -62,7 +61,6 @@
     border: none;
     color: #000000;
     background-color: #FFFFFF;
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
@@ -75,7 +73,6 @@
     border: none;
     color: #FF4062;
     background-color: #FFFFFF;
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;

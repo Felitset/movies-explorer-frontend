@@ -4,7 +4,7 @@ import './Promo.css';
 
 function Promo() {
     return (
-        <div className='promo main__promo'>
+        <section className='promo main__promo'>
             <img
                 className='promo__logo'
                 src={promoLogo}
@@ -15,7 +15,7 @@ function Promo() {
                 className='promo__btn'
                 onClick={() => window.open("https://practicum.yandex.ru/")}>Узнать больше</button>
 
-        </div>
+        </section>
     )
 }
 

@@ -14,50 +14,52 @@ import likeEnabled from '../../../images/like_enabled.png';
 
 function MoviesCardList() {
     return (
-        <ul className='movies_card_list'>
-            <li className='movies_card'>
+        <section className='main__movies movies'>
+        <ul className='movies__card_list'>
+            <li className='movies__card'>
                 <MovieCard
                     movieTitle='33 слова о дизайне'
                     moviePic={aboutDesign}
                     likePictogram={likeEnabled} />
             </li>
-            <li className='movies_card'>
+            <li className='movies__card'>
                 <MovieCard
                     movieTitle='Киноальманах «100 лет дизайна»'
                     moviePic={hundredYears}
                     likePictogram={likeEnabled} />
             </li>
-            <li className='movies_card'>
+            <li className='movies__card'>
                 <MovieCard
                     movieTitle='В погоне за Бенкси'
                     moviePic={catchingBanksy}
                     likePictogram={likeDisabled} />
             </li>
-            <li className='movies_card'>
+            <li className='movies__card'>
                 <MovieCard
                     movieTitle='Баския: Взрыв реальности'
                     moviePic={baskiya}
                     likePictogram={likeDisabled} />
             </li>
-            <li className='movies_card'>
+            <li className='movies__card'>
                 <MovieCard
                     movieTitle='Бег это свобода'
                     moviePic={running}
                     likePictogram={likeEnabled} />
             </li>
-            <li className='movies_card'>
+            <li className='movies__card'>
                 <MovieCard
                     movieTitle='Книготорговцы'
                     moviePic={booksellers}
                     likePictogram={likeDisabled} />
             </li>
-            <li className='movies_card'>
+            <li className='movies__card'>
                 <MovieCard
                     movieTitle='Когда я думаю о Германии ночью'
                     moviePic={whenIThink}
                     likePictogram={likeDisabled} />
             </li>
         </ul>
+        </section>
     )
 }
 

@@ -11,7 +11,7 @@ function Header(props) {
     return (
         <>
             {pathname === '/movies' &&
-                <header className="header" >
+                <header className="page__header header" >
 
                     <img
                         className="header__logo"
@@ -33,7 +33,7 @@ function Header(props) {
                 </header>}
 
             {pathname === '/saved-movies' &&
-                <header className="header" >
+                <header className="page__header header" >
 
                     <img
                         className="header__logo"
@@ -55,7 +55,7 @@ function Header(props) {
                 </header>}
 
             {pathname === '/profile' &&
-                <header className="header" >
+                <header className="page__header header" >
 
                     <img
                         className="header__logo"
@@ -77,7 +77,7 @@ function Header(props) {
                 </header>}
 
             {pathname === '/' &&
-                <header className="header header__main-page" >
+                <header className="page__header header header__main-page" >
 
                     <img
                         className="header__logo"

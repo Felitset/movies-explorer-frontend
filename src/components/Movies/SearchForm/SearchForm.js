@@ -4,7 +4,7 @@ import smalltumbOn from '../../../images/smalltumb_on.png';
 
 function SearchForm() {
     return (
-        <div className='search_form movies__search_form'>
+        <section className='search_form movies__search_form'>
 
             <div className="search_form__input">
                 <input
@@ -23,7 +23,7 @@ function SearchForm() {
                 <span className="filter_name">Короткометражки</span>
             </div>
 
-        </div>
+        </section>
     )
 }
 
