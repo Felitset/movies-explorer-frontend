@@ -1,9 +1,33 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React, { useState, useCallback } from 'react';
+import { Link, withRouter, Redirect } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import './Login.css';
 
-function Login() {
+function Login({ isLoggedIn, onLogin }) {
+
+    const [userData, setUserData] = useState({
+        email: '',
+        password: ''
+    })
+
+    const handleChange = useCallback((event) => {
+        const { name, value } = event.target;
+        setUserData({ ...userData, [name]: value })
+    }, [userData]);
+
+    const submitChange = useCallback( (event) => {
+        event.preventDefault()
+        try {
+            onLogin(userData.email, userData.password)
+        } catch (err) {
+            console.log('Error')
+        }
+    }, [onLogin, userData])
+
+    if (isLoggedIn) {
+        return (<Redirect to="/" />)
+    }
+
     return (
         <main className="page__login login">
             <div className="login__page_title">
@@ -22,6 +46,8 @@ function Login() {
                     id="email"
                     type="email"
                     name="email"
+                    onChange={handleChange}
+                    value={userData.email}
                 >
 
                 </input>
@@ -31,12 +57,15 @@ function Login() {
                     id="password"
                     type="password"
                     name="password"
+                    onChange={handleChange}
+                    value={userData.password}
                 ></input>
 
             </form>
             <button
                 className="login__button"
-                type="submit">Войти</button>
+                type="submit"
+                onClick={submitChange}>Войти</button>
             <div className="if-unregistered_line">
                 <p className="non-registered_line">Ещё не зарегистрированы? </p>
                 <Link to={'/signup'} className="login-to-register_link">Регистрация</Link>
