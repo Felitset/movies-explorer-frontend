@@ -1,0 +1,131 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 70px;
+    font-family: 'Inter', 'Arial', sans-serif;
+}
+
+.profile__greeting {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    margin: 74px 0 123px;
+}
+
+.profile__update_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile__input_block {
+    display: flex;
+    justify-content: space-between;
+    width: 410px;
+    border-bottom: solid 1px #E8E8E8;
+    padding: 17px 0 16px;
+}
+
+.profile__input_block:first-of-type {
+    padding: 0 0 16px;
+}
+
+.profile__input_block:last-of-type {
+    border-bottom: none;
+    padding: 17px 0 0;
+}
+
+.profile__input_label {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    color: #000000;
+    align-self: flex-start;
+}
+
+.profile__update_input {
+    border: none;
+    text-align: end;
+    align-self: flex-end;
+    font-size: 11px;
+    line-height: 13px;
+}
+
+.profile__update_btn {
+    text-align: center;
+    border: none;
+    color: #000000;
+    background-color: #FFFFFF;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    margin-top: 220px;
+    padding: 0;
+}
+
+.profile__exit_btn {
+    border: none;
+    color: #FF4062;
+    background-color: #FFFFFF;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    margin-top: 16px;
+    padding: 0;
+}
+
+@media screen and (max-width: 1150px) {
+
+    .profile {
+        padding-bottom: 269px;
+    }
+
+    .profile__greeting {
+        margin: 236px 0 96px;
+    }
+
+    .profile__input_block {
+        padding: 17px 0 16px;
+    }
+
+    .profile__update_input {
+        border: none;
+        text-align: end;
+        align-self: flex-end;
+    }
+
+    .profile__update_btn {
+        margin-top: 210px;
+    }
+
+}
+
+@media screen and (max-width: 631px) {
+    .profile {
+        padding-bottom: 40px;
+    }
+
+    .profile__greeting {
+        margin: 70px 0 80px;
+    }
+
+    .profile__input_block {
+        width: 260px;
+    }
+
+    .profile__update_btn {
+        margin-top: 379px;
+    }
+
+    .profile__exit_btn {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

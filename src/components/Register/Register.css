@@ -1,0 +1,149 @@
+.page__register {
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    font-family: 'Inter', 'Arial', sans-serif;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    min-width: 396px;
+    margin: 70px auto 0;
+}
+
+.register__title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    height: 29px;
+    margin: 40px 0;
+    padding: 0;
+    color: #000000;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    min-width: 396px;
+}
+
+.input_title {
+    color: #A0A0A0;
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+}
+
+.input {
+    border: none;
+    border-bottom: 2px solid #E8E8E8;
+    padding: 5px 0 10px;
+    margin-bottom: 24px;
+}
+
+.input:last-of-type {
+    margin-bottom: 0;
+}
+
+.if-registered_line {
+    display: flex;
+    margin: 0 auto 70px;
+}
+
+.registered_line {
+    color: #A0A0A0;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+.register-to-login_link {
+    color: #000000;
+    text-decoration: none;
+    margin: 0 6px;
+    padding: 0;
+    font-size: 14px;
+    transition: 0.3s ease-in-out;
+}
+
+.register-to-login_link:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.register__button {
+    width: 396px;
+    height: 45px;
+    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 17px;
+    background: #000000;
+    border-radius: 3px;
+    border: none;
+    margin: 134px auto 16px;
+    transition: 0.7s ease-in-out;
+}
+
+.register__button:hover {
+    cursor: pointer;
+    background: #F3C1F8;
+    color: #000000;
+}
+
+@media screen and (max-width: 1150px) {
+
+    .if-registered_line {
+        margin: 0 auto 232px;
+    }
+
+    .title {
+        margin: 232px auto 0;
+    }
+    .register__button {
+        margin: 129px auto 16px;
+    }
+
+}
+
+@media screen and (max-width: 631px) {
+
+    .title {
+        align-items: center;
+        margin: 56px auto 0;
+        min-width: 260px;
+    }
+
+    .header__logo {
+        margin: 0;
+    }
+
+    .register__title {
+        text-align: center;
+        margin: 50px auto 80px;
+    }
+
+    .register__form {
+        min-width: 260px;
+    }
+
+    .if-registered_line {
+        margin: 0 auto 30px;
+    }
+
+    .register__button {
+        width: 260px;
+        font-size: 12px;
+        margin: 240px auto 14px;
+    }
+
+    .registered_line {
+        font-size: 12px;
+    }
+
+    .register-to-login_link {
+        font-size: 12px;
+    }
+}
