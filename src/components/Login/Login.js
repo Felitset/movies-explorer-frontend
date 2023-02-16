@@ -15,7 +15,7 @@ function Login({ isLoggedIn, onLogin }) {
         setUserData({ ...userData, [name]: value })
     }, [userData]);
 
-    const submitChange = useCallback( (event) => {
+    const submitChange = useCallback((event) => {
         event.preventDefault()
         try {
             onLogin(userData.email, userData.password)
@@ -25,7 +25,7 @@ function Login({ isLoggedIn, onLogin }) {
     }, [onLogin, userData])
 
     if (isLoggedIn) {
-        return (<Redirect to="/" />)
+        return (<Redirect to="/movies" />)
     }
 
     return (
@@ -35,7 +35,7 @@ function Login({ isLoggedIn, onLogin }) {
                     className="header__logo"
                     src={logo}
                     alt="Логотип"
-                    onClick={() => window.open("/")} 
+                    onClick={() => window.open("/")}
                 />
                 <h1 className="login__title">Рады видеть!</h1>
             </div>
@@ -48,9 +48,11 @@ function Login({ isLoggedIn, onLogin }) {
                     name="email"
                     onChange={handleChange}
                     value={userData.email}
+                    required
                 >
 
                 </input>
+                <span className="input-error"></span>
                 <label className="input__title">Пароль</label>
                 <input
                     className="input login__password-input"
@@ -59,8 +61,9 @@ function Login({ isLoggedIn, onLogin }) {
                     name="password"
                     onChange={handleChange}
                     value={userData.password}
+                    required
                 ></input>
-
+                <span className="input-error"></span>
             </form>
             <button
                 className="login__button"

@@ -1,4 +1,4 @@
-export class Api {
+export class MoviesApi {
     constructor(apiHost) {
         this.apiHost = apiHost;
     }

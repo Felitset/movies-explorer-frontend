@@ -22,7 +22,7 @@ function Register({ isLoggedIn, onRegister }) {
     }, [onRegister, formData])
 
     if (isLoggedIn) {
-        return (<Redirect to="/" />)
+        return (<Redirect to="/movies" />)
     }
 
     return (
@@ -45,7 +45,9 @@ function Register({ isLoggedIn, onRegister }) {
                     name="name"
                     onChange={handleChange}
                     value={formData.name}
+                    required
                 ></input>
+                <span className="input-error"></span>
                 <p className="input_title">E-mail</p>
                 <input
                     className="input register_email-input"
@@ -54,7 +56,9 @@ function Register({ isLoggedIn, onRegister }) {
                     name="email"
                     onChange={handleChange}
                     value={formData.email}
+                    required
                 ></input>
+                <span className="input-error"></span>
                 <p className="input_title">Пароль</p>
                 <input
                     className="input register_password-input"
@@ -63,7 +67,9 @@ function Register({ isLoggedIn, onRegister }) {
                     name="password"
                     onChange={handleChange}
                     value={formData.password}
+                    required
                 ></input>
+                <span className="input-error"></span>
             </form>
             <button className="register__button"
                 type="submit"

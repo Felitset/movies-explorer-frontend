@@ -25,7 +25,7 @@ export const signInUser = async (email, password) => {
 };
 
 export const getUserProfile = async (token) => {
-    const res = await fetch(`${apiAuthHost}/profile`, {
+    const res = await fetch(`${apiAuthHost}/users/me`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -37,7 +37,7 @@ export const getUserProfile = async (token) => {
 }
 
 export const updateUserProfile = async (token) => {
-    const res = await fetch(`${apiAuthHost}/profile`, {
+    const res = await fetch(`${apiAuthHost}/users/me`, {
         method: 'PATCH',
         headers: {
             'Accept': 'application/json',
@@ -70,6 +70,18 @@ export const deleteMovie = async (movieId, token) => {
             }
         })
         return checkResponse(res);
+}
+
+export const getSavedMovies = async (token) => {
+    const res = await fetch(`${apiAuthHost}/movies`, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    return checkResponse(res);
 }
 
 const checkResponse = (res) => res.ok ? res.json() : Promise.reject(`Error: ${res.statusText}`);

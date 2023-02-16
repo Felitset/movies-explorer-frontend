@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext} from "react";
 import './Profile.css';
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 
 function Profile(props) {
+    const {name, email} = useContext(CurrentUserContext);
+    console.log('i pring when Profile runs')
+
     return (
         <div className="profile main__profile">
-            <h1 className='profile__greeting'>Привет, Виталий!</h1>
+            <h1 className='profile__greeting'>Привет, {name}</h1>
             <form id='update_user_info' className="profile__update_form">
                 <span className='profile__input_block'>
                     <label className="profile__input_label">Имя</label>
