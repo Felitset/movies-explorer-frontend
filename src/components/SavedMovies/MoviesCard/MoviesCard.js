@@ -1,24 +1,58 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './MoviesCard.css';
 import deleteBtn from '../../../images/close_btn.png';
 
-
 function MoviesCard(props) {
+
+    useEffect(() => {
+        console.log('checking useeffect for saved movie card')
+        props.loadSavedMovies()
+    },
+        [])
+
+    function handlePicClick() {
+        props.onMoviePicClick(props.movie);
+    }
+
+    function duration(t) {
+        let hours = 0;
+        let minutes = 0;
+        if (t >= 60) {
+            hours = ~~(t / 60);
+            minutes = t % 60;
+        }
+        if (t < 60) {
+            hours = 0;
+            minutes = t;
+        }
+        return `${hours}ч ${minutes}м`;
+    }
+
+    function handleMovieDelete() {
+        props.onMovieDelete(props.key_for_deletion)
+    }
+
     return (
-        <div className='movie_card'>
+        <li className='saved_movies__card'>
             <div className='movie_card__info'>
                 <h2 className='movie_title'>{props.movieTitle}</h2>
-                <p className='movie_duration'>1ч 42м</p>
+                <p className='movie_duration'>
+                    {duration(props.duration)}
+                </p>
                 <img
                     className='movie_remove_from_list'
                     src={deleteBtn}
-                    alt='Знак крест. Убрать из избранного' />
+                    alt='Знак крест. Убрать из избранного'
+                    onClick={() => {
+                        handleMovieDelete(props.key_for_deletion)
+                    }} />
             </div>
             <img
                 className='movie_card__pic'
                 src={props.moviePic}
-                alt='Афиша фильма' />
-        </div>
+                alt='Афиша фильма'
+                onClick={() => { handlePicClick() }} />
+        </li>
     )
 }
 

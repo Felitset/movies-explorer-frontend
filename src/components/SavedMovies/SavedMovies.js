@@ -5,12 +5,16 @@ import MoviesCardList from './MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 
 
-function SavedMovies() {
+function SavedMovies(props) {
     return (
         <>
             <main className="page__saved_movies">
                 <SearchForm />
-                <MoviesCardList />
+                <MoviesCardList 
+                savedMovies={props.savedMovies}
+                loadSavedMovies={props.loadSavedMovies}
+                onMoviePicClick={props.onMoviePicClick}
+                onMovieDelete={props.onMovieDelete}/>
             </main>
             <Footer />
         </>

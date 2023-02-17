@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import './MoviesCard.css';
-// import { CurrentUserContext } from "../../../context/CurrentUserContext";
 
 function MoviesCard(props) {
-    // const currentUser = React.useContext(CurrentUserContext);
 
     function handlePicClick() {
         props.onMoviePicClick(props.movie);
@@ -23,14 +21,7 @@ function MoviesCard(props) {
         return `${hours}ч ${minutes}м`;
       }
 
-    // const isOwn = props.movie.owner._id === currentUser._id;
-
-    // const cardDeleteButtonClassName = (
-    //     ` ${isOwn ? 'gallery__delete-item' : 'gallery__delete-item_hidden'}`
-    // );
-
-    // const isLiked = props.movie.likes.some(i => i._id === currentUser._id);
-    const isSaved = props.savedMovies.some((m) => m.movieId === props.movie.movieId);
+    const isSaved = props.savedMovies.find((m) => m.movieId === props.movie.id);
     const movieLikeButtonClassName = (
         `movie_like_btn ${isSaved ? 'movie_like_btn_status_active' : ''}`
     );
@@ -38,10 +29,6 @@ function MoviesCard(props) {
     function handleLikeClick() {
         props.onMovieLike(props.movie)
     }
-
-    // function handleDeleteClick() {
-    //     props.onCardDelete(props.card)
-    // }
 
     return (
      

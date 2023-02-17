@@ -44,9 +44,11 @@ function App() {
             }
         } catch { }
     }, [])
+
     useEffect(() => {
         checkToken()
     }, [checkToken])
+
     const authenticateUser = useCallback(async (email, password) => {
         try {
             const { token } = await mainApi.signInUser(email, password);
@@ -75,9 +77,9 @@ function App() {
             if (!data) {
                 throw new Error('No data');
             }
-            //   setIsSuccessModalOpen(true);
+            console.log('успех регистрации')
         } catch {
-            //   setIsFailModalOpen(true);
+            console.log('ошибка регистрации')
         }
     }, []);
 
@@ -86,24 +88,26 @@ function App() {
         setLoggedIn(false);
     }, [])
 
+function getSavedMovies() {
+    let token = localStorage.getItem('jwt')
+    mainApi.getSavedMovies(token)
+        .then((res) => {
+            setSavedMovies(res)
+        }
+        )
+}
+
     function getMovies() {
         if (loggedIn) {
             api.getAllMovies()
                 .then((res) => {
-                    console.log(res)
                     setMovies(res.slice(0, 6), ...movies);
                 })
                 .catch((err) => {
                     console.log(err)
                 })
-            let token = localStorage.getItem('jwt')
-            mainApi.getSavedMovies(token)
-                .then((res) => {
-                    setSavedMovies(res)
-                }
-                )
+            getSavedMovies()
         }
-        console.log('запрос на фильмы')
     }
 
     function handleMoviePicClick(movie) {
@@ -141,35 +145,20 @@ function App() {
                 mainApi.deleteMovie(movieIsSaved._id, token)
             }
 
-            // .then((res) => {
-            //     setSavedMovies.push(res)
-            // })
-
-            mainApi.getSavedMovies(token)
-                .then((res) => {
-                    console.log('обновить дерьмо',res)
-
-                    setSavedMovies(res)
-                }
-                )
+            getSavedMovies()
         }
     }
 
-    // useEffect(() => {
-    //     if (loggedIn) {
-    //     api.getMovies()
-    //       .then((data) => {
-    //         setMovies(data);
-    //       })
-    //       .catch((err) => {
-    //         console.log(err)
-    //       })}
-    //   },
-    //     [loggedIn])
-
-    // useEffect(() => {
-    //     checkToken()
-    // }, [checkToken])
+    function handleMovieDelete(movieId) {
+        if (loggedIn) {
+            console.log('deleting movie from saved list')
+            let token = localStorage.getItem('jwt')
+            mainApi.deleteMovie(movieId, token)
+                .then(() => {
+                    getSavedMovies()
+                })
+        }
+    }
 
     function handleMenuClick() {
         setIsNavTabOpen(true);
@@ -177,6 +166,12 @@ function App() {
 
     function handleCloseMenuClick() {
         setIsNavTabOpen(false);
+    }
+
+    function loadSavedMovies() {
+        if (loggedIn) {
+            getSavedMovies()
+        }
     }
 
     return (
@@ -200,7 +195,11 @@ function App() {
 
                         <ProtectedRoute path="/saved-movies"
                             loggedIn={loggedIn}
-                            component={SavedMovies} />
+                            component={SavedMovies}
+                            savedMovies={savedMovies}
+                            loadSavedMovies={loadSavedMovies}
+                            onMoviePicClick={handleMoviePicClick}
+                            onMovieDelete={handleMovieDelete} />
 
                         <ProtectedRoute path="/profile"
                             loggedIn={loggedIn}

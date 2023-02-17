@@ -27,7 +27,7 @@ function NavTab(props) {
                         <Link
                             className='nav-tab__menu_link'
                             to="/saved-movies"
-                            onClick={props.onClose}>Сораненные фильмы</Link>
+                            onClick={props.onClose}>Сохраненные фильмы</Link>
                     </div>
                     <img
                         className='nav-tab__profile_btn'
