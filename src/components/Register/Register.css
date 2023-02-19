@@ -77,6 +77,19 @@
 .register__button {
     width: 396px;
     height: 45px;
+    color: #000000;
+    font-size: 14px;
+    line-height: 17px;
+    background: #A0A0A0;
+    border-radius: 3px;
+    border: none;
+    margin: 134px auto 16px;
+    opacity: 0.6;
+}
+
+.register__button_status_active {
+    width: 396px;
+    height: 45px;
     color: #FFFFFF;
     font-size: 14px;
     line-height: 17px;
@@ -87,7 +100,7 @@
     transition: 0.7s ease-in-out;
 }
 
-.register__button:hover {
+.register__button_status_active:hover {
     cursor: pointer;
     background: #F3C1F8;
     color: #000000;

@@ -15,6 +15,7 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import NavTab from '../Main/NavTab/NavTab';
 import '../../index.css';
 import * as mainApi from '../../utils/MainApi';
+import InfoTooltip from '../InfoToolTip/InfoToolTip';
 
 function App() {
 
@@ -23,8 +24,13 @@ function App() {
 
     const [loggedIn, setLoggedIn] = useState(false);
 
-    const [movies, setMovies] = useState([]);
+    const [allMovies, setAllMovies] = useState([]);
     const [savedMovies, setSavedMovies] = useState([]);
+    const [isFailModalOpen, setIsFailModalOpen] = useState(false);
+
+    const [shortFilmFlag, setShortFilmFlag] = useState(false);
+    const [searchedAllMovies, setSearchedAllMovies] = useState([])
+    const [searchedSavedMovies, setSearchedSavedMovies] = useState([])
 
     const checkToken = useCallback(() => {
         try {
@@ -79,6 +85,7 @@ function App() {
             }
             console.log('успех регистрации')
         } catch {
+            setIsFailModalOpen(true)
             console.log('ошибка регистрации')
         }
     }, []);
@@ -88,30 +95,60 @@ function App() {
         setLoggedIn(false);
     }, [])
 
-function getSavedMovies() {
-    let token = localStorage.getItem('jwt')
-    mainApi.getSavedMovies(token)
-        .then((res) => {
-            setSavedMovies(res)
-        }
-        )
-}
-
-    function getMovies() {
+    function getSavedMovies() {
         if (loggedIn) {
-            api.getAllMovies()
+            let token = localStorage.getItem('jwt')
+            mainApi.getSavedMovies(token)
                 .then((res) => {
-                    setMovies(res.slice(0, 6), ...movies);
+                    localStorage.setItem("savedMoviesList", JSON.stringify(res));
+                    setSavedMovies(res)
+                }
+                )
+        }
+    }
+
+    const getMovies = async () => {
+        if (loggedIn) {
+            await api.getAllMovies()
+                .then((res) => {
+                    localStorage.setItem("moviesList", JSON.stringify(res));
+                    setAllMovies(res.slice(0, 6), ...allMovies);
+                    getSavedMovies()
+                    return res
                 })
                 .catch((err) => {
                     console.log(err)
                 })
-            getSavedMovies()
         }
     }
 
-    function handleMoviePicClick(movie) {
-        window.open(`${movie.trailerLink}`)
+    // function getMovies() {
+    //     if (loggedIn) {
+    //         api.getAllMovies()
+    //             .then((res) => {
+    //                 localStorage.setItem("moviesList", JSON.stringify(res));
+    //                 // localStorage.setItem("moviesList", JSON.stringify(res));
+    //                 setMovies(res.slice(0, 6), ...movies);
+    //                 getSavedMovies()
+    //                 return res
+    //             })
+    //             .catch((err) => {
+    //                 console.log(err)
+    //             })
+    //     }
+    // }
+
+    function displayMovies(array, n) {
+        let [...arr] = array;
+        var res = [];
+        while (arr.length) {
+            res.push(arr.splice(0, n));
+        }
+        return res;
+    }
+
+    function handleMoviePicClick(link) {
+        window.open(`${link}`)
     }
 
     function handleMovieLike(movie) {
@@ -168,9 +205,53 @@ function getSavedMovies() {
         setIsNavTabOpen(false);
     }
 
-    function loadSavedMovies() {
-        if (loggedIn) {
-            getSavedMovies()
+    function handleModalClose() {
+        setIsFailModalOpen(false)
+    }
+
+    async function getAndFilterAllMovies(query) {
+        let moviesList = localStorage.getItem('moviesList')
+        if (!moviesList) {
+            moviesList = getMovies()
+        }
+        let searchedMovies = filterMovies(JSON.parse(localStorage.getItem('moviesList')), query)
+        setSearchedAllMovies(searchedMovies)
+    }
+
+    async function getAndFilterSavedMovies(query) {
+        let moviesList = localStorage.getItem('savedMoviesList')
+        if (!moviesList) {
+            moviesList = getSavedMovies()
+        }
+        let searchedMovies = filterMovies(JSON.parse(localStorage.getItem('savedMoviesList')), query)
+        setSearchedSavedMovies(searchedMovies)
+    }
+
+    function filterMovies(arr, query) {
+        let searchedMovies = arr
+        if (shortFilmFlag) {
+            searchedMovies = filterByDuration(searchedMovies)
+        }
+
+        const movies_by_en = searchedMovies.filter((el) => el.nameEN.toLowerCase().includes(query.toLowerCase()));
+        const movies_by_ru = searchedMovies.filter((el) => el.nameRU.toLowerCase().includes(query.toLowerCase()));
+
+        return [...new Set([...movies_by_en, ...movies_by_ru])];
+    }
+
+    function filterByDuration(arr) {
+        let shortMovies = arr.filter((el) => el.duration <= 40);
+        if (shortMovies.length === 0) {
+            setIsFailModalOpen(true)
+        }
+        return shortMovies;
+    }
+
+    function shortFilmsToggleButton() {
+        if (shortFilmFlag) {
+            setShortFilmFlag(false)
+        } else {
+            setShortFilmFlag(true)
         }
     }
 
@@ -187,19 +268,29 @@ function getSavedMovies() {
                         <ProtectedRoute path="/movies"
                             loggedIn={loggedIn}
                             component={Movies}
-                            movies={movies}
+                            movies={searchedAllMovies}
                             savedMovies={savedMovies}
-                            onMoviesSearch={getMovies}
+                            onMoviesProlong={displayMovies}
                             onMoviePicClick={handleMoviePicClick}
-                            onMovieLike={handleMovieLike} />
+                            onMovieLike={handleMovieLike}
+                            onFilterMovies={getAndFilterAllMovies}
+                            shortFilmFlag={shortFilmFlag}
+                            shortFilmsToggleButton={shortFilmsToggleButton}
+                        />
 
                         <ProtectedRoute path="/saved-movies"
                             loggedIn={loggedIn}
                             component={SavedMovies}
-                            savedMovies={savedMovies}
-                            loadSavedMovies={loadSavedMovies}
+                            movies={searchedSavedMovies}
+                            onMoviesProlong={displayMovies}
                             onMoviePicClick={handleMoviePicClick}
-                            onMovieDelete={handleMovieDelete} />
+                            onMovieDelete={handleMovieDelete}
+                            onFilterMovies={getAndFilterSavedMovies}
+                            shortFilmFlag={shortFilmFlag}
+                            shortFilmsToggleButton={shortFilmsToggleButton}
+
+                            getSavedMovies={getSavedMovies}
+                        />
 
                         <ProtectedRoute path="/profile"
                             loggedIn={loggedIn}
@@ -213,6 +304,9 @@ function getSavedMovies() {
 
                         <Route path="/signup">
                             <Register isLoggedIn={loggedIn} onRegister={registerUser} />
+                            {isFailModalOpen && <InfoTooltip
+                                title="Что-то пошло не так! Попробуйте ещё раз."
+                                onClose={handleModalClose} />}
                         </Route>
 
                         <Route exact path="/">

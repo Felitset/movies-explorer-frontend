@@ -1,13 +1,15 @@
 import React, { useRef } from "react";
-import './SearchForm.css';
+import './SearchSavedForm.css';
 
-function SearchForm(props) {
+function SearchSavedForm(props) {
     const queryRef = useRef();
 
     function handleSubmit(e) {
+        console.log('submite')
         e.preventDefault();
         let searchQuery = queryRef.current.value
-        props.onFilterMovies(searchQuery)
+        console.log('search for text', searchQuery)
+        props.onFilterSavedMovies(searchQuery)
     }
 
     function shortFilmsToggleButton(e){
@@ -50,4 +52,4 @@ function SearchForm(props) {
     )
 }
 
-export default SearchForm
+export default SearchSavedForm

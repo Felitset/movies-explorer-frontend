@@ -1,17 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import './MoviesCard.css';
 import deleteBtn from '../../../images/close_btn.png';
 
 function MoviesCard(props) {
 
-    useEffect(() => {
-        console.log('checking useeffect for saved movie card')
-        props.loadSavedMovies()
-    },
-        [])
-
     function handlePicClick() {
-        props.onMoviePicClick(props.movie);
+        props.onMoviePicClick(props.trailerLink);
     }
 
     function duration(t) {

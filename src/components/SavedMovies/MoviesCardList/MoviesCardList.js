@@ -3,17 +3,18 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 function MoviesCardList(props) {
-    console.log(props.savedMovies)
+console.log('movies', props.movies)
     return (
         <section className='main__saved_movies saved_movies'>
             <ul className="saved_movies__card_list">
-                {props.savedMovies.map((savedMovie) => <MoviesCard
-                    key_for_deletion={savedMovie._id}
-                    duration = {savedMovie.duration}
-                    loadSavedMovies={props.loadSavedMovies}
-                    movieTitle={savedMovie.nameRU}
-                    moviePic={savedMovie.image}
+                {props.movies.map((movie) => <MoviesCard
+                    key={movie.movieId}
+                    key_for_deletion={movie._id}
+                    duration={movie.duration}
+                    movieTitle={movie.nameRU}
+                    moviePic={movie.image}
                     onMoviePicClick={props.onMoviePicClick}
+                    trailerLink={movie.trailerLink}
                     onMovieLike={props.onMovieLike}
                     onMovieDelete={props.onMovieDelete} />)}
 
