@@ -16,7 +16,8 @@ console.log('movies', props.movies)
                     onMoviePicClick={props.onMoviePicClick}
                     trailerLink={movie.trailerLink}
                     onMovieLike={props.onMovieLike}
-                    onMovieDelete={props.onMovieDelete} />)}
+                    onMovieDelete={props.onMovieDelete} 
+                    />)}
 
             </ul>
             <div className="saved_movies__blank_space"></div>

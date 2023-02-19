@@ -38,7 +38,7 @@ function MoviesCard(props) {
                     src={deleteBtn}
                     alt='Знак крест. Убрать из избранного'
                     onClick={() => {
-                        handleMovieDelete(props.key_for_deletion)
+                        handleMovieDelete()
                     }} />
             </div>
             <img
