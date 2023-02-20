@@ -29,8 +29,10 @@ function App() {
     const [isFailModalOpen, setIsFailModalOpen] = useState(false);
 
     const [shortFilmFlag, setShortFilmFlag] = useState(false);
-    const [searchedAllMovies, setSearchedAllMovies] = useState([])
-    const [searchedSavedMovies, setSearchedSavedMovies] = useState([])
+    const [searchedAllMovies, setSearchedAllMovies] = useState([]);
+    const [searchedSavedMovies, setSearchedSavedMovies] = useState([]);
+
+    const [isLoading, setIsLoading] = useState(false);
 
     const checkToken = useCallback(() => {
         try {
@@ -91,29 +93,36 @@ function App() {
     }, []);
 
     const logout = useCallback(() => {
-        localStorage.removeItem('jwt');
+        localStorage.clear();
         setLoggedIn(false);
     }, [])
 
     function getSavedMovies() {
         if (loggedIn) {
+            // setIsLoading(true)
             let token = localStorage.getItem('jwt')
             mainApi.getSavedMovies(token)
                 .then((res) => {
                     localStorage.setItem("savedMoviesList", JSON.stringify(res));
                     setSavedMovies(res)
+                    // setIsLoading(false)
+                    // console.log(isLoading)
                 }
                 )
         }
     }
 
     const getMovies = async () => {
+        // setIsLoading(true)
+        console.log(isLoading)
         if (loggedIn) {
             await api.getAllMovies()
                 .then((res) => {
                     localStorage.setItem("moviesList", JSON.stringify(res));
                     setAllMovies(res.slice(0, 6), ...allMovies);
                     getSavedMovies()
+                    // setIsLoading(false)
+                    // console.log(isLoading)
                     return res
                 })
                 .catch((err) => {
@@ -210,12 +219,15 @@ function App() {
     }
 
     async function getAndFilterAllMovies(query) {
+        // setIsLoading(true)
+        // console.log(isLoading)
         let moviesList = localStorage.getItem('moviesList')
         if (!moviesList) {
             moviesList = getMovies()
         }
         let searchedMovies = filterMovies(JSON.parse(localStorage.getItem('moviesList')), query)
         setSearchedAllMovies(searchedMovies)
+
     }
 
     async function getAndFilterSavedMovies(query) {
@@ -235,8 +247,10 @@ function App() {
 
         const movies_by_en = searchedMovies.filter((el) => el.nameEN.toLowerCase().includes(query.toLowerCase()));
         const movies_by_ru = searchedMovies.filter((el) => el.nameRU.toLowerCase().includes(query.toLowerCase()));
-
+        // setIsLoading(false)
+        // console.log(isLoading)
         return [...new Set([...movies_by_en, ...movies_by_ru])];
+                
     }
 
     function filterByDuration(arr) {
@@ -255,12 +269,24 @@ function App() {
         }
     }
 
+    function handleUpdateUser() {
+        if (loggedIn) {
+const token = localStorage.getItem('jwt');
+        mainApi.updateUserProfile(token)
+          .then((res) => {
+            setCurrentUser(res)
+          })
+          .catch((err) => {
+            console.log(err)
+          })}
+      }
+
     return (
         <>
             <CurrentUserContext.Provider value={currentUser}>
                 <div className="page">
                     <Header
-                        onMenuOpen={handleMenuClick} />
+                        onMenuOpen={handleMenuClick} isLoggedIn={loggedIn}/>
                     <NavTab
                         isOpen={isNavTabOpen}
                         onClose={handleCloseMenuClick} />
@@ -276,6 +302,7 @@ function App() {
                             onFilterMovies={getAndFilterAllMovies}
                             shortFilmFlag={shortFilmFlag}
                             shortFilmsToggleButton={shortFilmsToggleButton}
+                            onLoading={isLoading}
                         />
 
                         <ProtectedRoute path="/saved-movies"
@@ -295,6 +322,7 @@ function App() {
                         <ProtectedRoute path="/profile"
                             loggedIn={loggedIn}
                             component={Profile}
+                            onUpdateProfile={handleUpdateUser}
                             onLogout={logout}
                         />
 

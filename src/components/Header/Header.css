@@ -23,6 +23,7 @@
 .header__profile_button {
     width: 100px;
     height: 32px;
+    background: url(../../images/profile_btn.png);
     transition: 0.7s ease-in-out;
 }
 
@@ -33,6 +34,10 @@
     transform: scale(1.2);
 }
 
+.header__profile_button_hide {
+    display: none;
+}
+
 .header__main-page {
     background-color: #F3C1F8;
     border: none;
@@ -41,6 +46,18 @@
 .header__btns {
     display: flex;
     align-items: center;
+}
+
+.header__btns_hidden {
+    display: none;
+}
+
+.header__nav_show {
+    display: block;
+}
+
+.header__nav_hide {
+    display: none;
 }
 
 .header__btns_registration-link {
@@ -83,6 +100,9 @@
 
 .header__menu_button {
     display: none;
+    background: url(../../images/menu_pict.png);
+    background-color: transparent;
+    border: none;
     width: 44px;
     height: 44px;
     transition: 0.7s ease-in-out;
@@ -93,6 +113,9 @@
     transform: scale(1.1);
     background-color: #F3C1F8;
     border-radius: 50px;
+}
+.header__menu_button_hide {
+    display: none;
 }
 
 @media screen and (max-width: 1150px) {

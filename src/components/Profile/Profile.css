@@ -60,6 +60,7 @@
     text-align: center;
     border: none;
     color: #000000;
+    opacity: 0.6;
     background-color: #FFFFFF;
     font-style: normal;
     font-weight: 400;
@@ -67,6 +68,24 @@
     line-height: 16px;
     margin-top: 220px;
     padding: 0;
+}
+.profile__update_btn_active {
+    text-align: center;
+    border: none;
+    color: #000000;
+    background-color: #FFFFFF;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    margin-top: 220px;
+    padding: 0;
+    transition: 0.3s ease-in;
+}
+
+.profile__update_btn_active:hover {
+cursor: pointer;
+transform: scale(1.1);
 }
 
 .profile__exit_btn {
@@ -79,6 +98,12 @@
     line-height: 16px;
     margin-top: 16px;
     padding: 0;
+    transition: 0.3s ease-in;
+}
+
+.profile__exit_btn:hover {
+cursor: pointer;
+transform: scale(1.1);
 }
 
 @media screen and (max-width: 1150px) {
@@ -104,7 +129,9 @@
     .profile__update_btn {
         margin-top: 210px;
     }
-
+    .profile__update_btn_active {
+        margin-top: 210px;
+    }
 }
 
 @media screen and (max-width: 631px) {
@@ -121,6 +148,10 @@
     }
 
     .profile__update_btn {
+        margin-top: 379px;
+    }
+
+    .profile__update_btn_active {
         margin-top: 379px;
     }
 

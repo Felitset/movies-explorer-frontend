@@ -9,7 +9,7 @@ function InfoTooltip(props) {
             className="popup__close"
             type="button"
             onClick={props.onClose} />
-          <img className="infoTooltip__img" src={props.image} alt="пиктограмма"></img>
+          <div className="infoTooltip__img" ></div>
           <h1 className="infoTooltip__title">{props.title}</h1>
         </div>
       </div>

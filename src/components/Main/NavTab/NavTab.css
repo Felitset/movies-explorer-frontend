@@ -11,6 +11,7 @@
     top: 0;
     right: 0;
     font-family: 'Inter', 'Arial', sans-serif;
+    padding-bottom: 20px;
 }
 
 .nav-tab__body {
@@ -44,7 +45,7 @@
 }
 
 .nav-tab__menu {
-    margin: 159px 90px 621px;
+    margin: 159px 90px 400px;
     display: flex;
     flex-direction: column;
 }
@@ -72,6 +73,8 @@
 }
 
 .nav-tab__profile_btn {
+    background: url(../../../images/profile_btn.png);
+    background-color: transparent;
     width: 100px;
     height: 32px;
     margin: 0 auto 90px;

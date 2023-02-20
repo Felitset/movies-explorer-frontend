@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import './Movies.css';
 import SearchForm from './SearchForm/SearchForm';
-// import Preloader from './Preloader/Preloader';
+import Preloader from './Preloader/Preloader';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import InfoTooltip from "../InfoToolTip/InfoToolTip";
 
 function Movies(props) {
+
     const [isFailModalOpen, setIsFailModalOpen] = useState(false);
 
     function handleModalClose() {
@@ -29,7 +30,10 @@ function Movies(props) {
 
                     movies={props.movies} />
 
-                {/* <Preloader /> */}
+                {props.onLoading && <Preloader 
+                // customLoading={props.onLoading}
+                // time={0}
+                />}
 
                 <MoviesCardList
                     movies={props.movies}
