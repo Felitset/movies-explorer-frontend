@@ -33,7 +33,7 @@ function App() {
     const [allMovies, setAllMovies] = useState([]);
     const [savedMovies, setSavedMovies] = useState([]);
     const [isFailModalOpen, setIsFailModalOpen] = useState(false);
- 
+
     const [shortFilmAllMoviesFlag,
         setShortFilmAllMoviesFlag] = useState(localStorage.getItem(toggleStateAllMoviesKey) === 'true');
     const [shortFilmSavedMoviesFlag,
@@ -42,7 +42,7 @@ function App() {
     const [filteredAllMovies, setFilteredAllMovies] = useState([])
     const [filteredSavedMovies, setFilteredSavedMovies] = useState([])
 
-    const [isLoading, setIsLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const checkToken = useCallback(() => {
         try {
@@ -217,7 +217,7 @@ function App() {
     }
 
     const getAndFilterAllMovies = async (query) => {
-        setIsLoading(true)
+        setLoading(true)
         let moviesList = localStorage.getItem(allMoviesListKey)
         if (!moviesList) {
             moviesList = await getMovies()
@@ -230,10 +230,11 @@ function App() {
 
         localStorage.setItem(filteredAllMoviesKey, JSON.stringify(filteredMovies))
         localStorage.setItem(localStorageQueryAllMoviesKey, query)
+        setLoading(false)
     }
 
     const getAndFilterSavedMovies = async (query) => {
-        setIsLoading(true);
+        setLoading(true)
         let moviesList = localStorage.getItem(savedMoviesListKey)
         if (!moviesList) {
             moviesList = await getSavedMovies()
@@ -246,10 +247,10 @@ function App() {
 
         localStorage.setItem(filteredSavedMoviesKey, JSON.stringify(filteredMovies))
         localStorage.setItem(localStorageQuerySavedMoviesKey, query)
+        setLoading(false)
     }
 
     function filterMovies(arr, query, shortMoviesFlag) {
-        setIsLoading(true);
         let filteredMovies = arr
         if (shortMoviesFlag === 'true') {
             filteredMovies = filterByDuration(filteredMovies)
@@ -258,7 +259,7 @@ function App() {
         const movies_by_en = filteredMovies.filter((el) => el.nameEN.toLowerCase().includes(query.toLowerCase()));
         const movies_by_ru = filteredMovies.filter((el) => el.nameRU.toLowerCase().includes(query.toLowerCase()));
 
-        setIsLoading(false);
+
         return [...new Set([...movies_by_en, ...movies_by_ru])];
     }
 
@@ -271,7 +272,6 @@ function App() {
     }
 
     const shortFilmsAllMoviesToggleButton = async () => {
-        setIsLoading(true)
         if (shortFilmAllMoviesFlag) {
             setShortFilmAllMoviesFlag(false)
             await asyncLocalStorage.setItem(toggleStateAllMoviesKey, false)
@@ -319,7 +319,7 @@ function App() {
                         <ProtectedRoute path="/movies"
                             loggedIn={loggedIn}
                             component={Movies}
-                            onLoading={isLoading}
+                            loading={loading}
                             movies={filteredAllMovies}
                             savedMovies={savedMovies}
                             onMoviesProlong={displayMovies}
@@ -343,6 +343,7 @@ function App() {
                             shortFilmsToggleButton={shortFilmsSavedMoviesToggleButton}
                             localStorageQueryKey={localStorageQuerySavedMoviesKey}
                             getSavedMovies={getSavedMovies}
+                            loading={loading}
                         />
 
                         <ProtectedRoute path="/profile"

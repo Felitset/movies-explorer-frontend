@@ -10,7 +10,7 @@ import { filteredAllMoviesKey } from "../../utils/const";
 function Movies(props) {
     const [isFailModalOpen, setIsFailModalOpen] = useState(false);
 
-    const nothingFoundShow = ` ${localStorage.getItem(filteredAllMoviesKey) === [] ? 'nothing_found_hide' : 'nothing_found_show' }`;
+    const nothingFoundShow = ` ${localStorage.getItem(filteredAllMoviesKey) === [] ? 'nothing_found_hide' : 'nothing_found_show'}`;
 
     const pageStep = 7;
     const [lastItemIndex, setLastItemIndex] = useState(pageStep);
@@ -27,7 +27,6 @@ function Movies(props) {
         setLastItemIndex(pageStep);
         props.onFilterMovies(searchQuery);
     }
-
     return (
         <>
             <main className="page__movies">
@@ -43,22 +42,20 @@ function Movies(props) {
                     shortFilmsToggleButton={props.shortFilmsToggleButton}
                     shortFilmFlag={props.shortFilmFlag}
                     localStorageQueryKey={props.localStorageQueryKey}
-                    movies={props.movies} />
+                    movies={props.movies}
+                    onLoading={props.onLoading} />
 
                 {<div className={nothingFoundShow}>
                     Ничего не найдено</div>}
 
-                {props.onLoading && <Preloader
-                    time={5000}
-                />}
-
-                <MoviesCardList
-                    movies={props.movies.slice(0, lastItemIndex)}
-                    savedMovies={props.savedMovies}
-                    onMoviePicClick={props.onMoviePicClick}
-                    onMovieLike={props.onMovieLike}
-                />
-
+                {props.loading ? <Preloader /> :
+                    <MoviesCardList
+                        movies={props.movies.slice(0, lastItemIndex)}
+                        savedMovies={props.savedMovies}
+                        onMoviePicClick={props.onMoviePicClick}
+                        onMovieLike={props.onMovieLike}
+                    />
+                }
                 <div className='expand_list'>
                     <button
                         type="button"

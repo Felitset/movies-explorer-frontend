@@ -10,7 +10,7 @@ function SearchForm(props) {
         props.onFilterMovies(searchQuery)
     }
 
-    function shortFilmsToggleButton(e){
+    function shortFilmsToggleButton(e) {
         e.preventDefault();
         props.shortFilmsToggleButton();
     }

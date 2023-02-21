@@ -5,10 +5,8 @@ function SearchSavedForm(props) {
     const queryRef = useRef();
 
     function handleSubmit(e) {
-        console.log('submite')
         e.preventDefault();
         let searchQuery = queryRef.current.value
-        console.log('search for text', searchQuery)
         props.onFilterSavedMovies(searchQuery)
     }
 

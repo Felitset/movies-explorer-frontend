@@ -4,6 +4,7 @@ import SearchForm from '../Movies/SearchForm/SearchForm';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import InfoTooltip from "../InfoToolTip/InfoToolTip";
+import Preloader from "../Movies/Preloader/Preloader"
 
 function SavedMovies(props) {
     const [isFailModalOpen, setIsFailModalOpen] = useState(false);
@@ -28,11 +29,11 @@ function SavedMovies(props) {
                     movies={props.movies}
                     localStorageQueryKey={props.localStorageQueryKey}
                 />
-
-                <MoviesCardList
-                    movies={props.movies}
-                    onMoviePicClick={props.onMoviePicClick}
-                    onMovieDelete={props.onMovieDelete} />
+                {props.loading ? <Preloader /> :
+                    <MoviesCardList
+                        movies={props.movies}
+                        onMoviePicClick={props.onMoviePicClick}
+                        onMovieDelete={props.onMovieDelete} />}
             </main>
             <Footer />
         </>
