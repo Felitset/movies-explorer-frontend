@@ -28,13 +28,13 @@ function SearchForm(props) {
                     className="search_input"
                     type="search"
                     placeholder="Фильм"
-                    ref={queryRef}>
+                    ref={queryRef}
+                    defaultValue={localStorage.getItem(props.localStorageQueryKey)}>
                 </input>
                 <button
                     type="submit"
                     className="search_btn"
                     onClick={handleSubmit}>
-
                 </button>
             </div>
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
 import api from '../../utils/api_config';
 import { CurrentUserContext } from "../../context/CurrentUserContext.js";
@@ -16,9 +16,15 @@ import NavTab from '../Main/NavTab/NavTab';
 import '../../index.css';
 import * as mainApi from '../../utils/MainApi';
 import InfoTooltip from '../InfoToolTip/InfoToolTip';
+import asyncLocalStorage from '../../utils/async_local_storage.js'
+import {
+    jwtLSKey, localStorageQueryAllMoviesKey, localStorageQuerySavedMoviesKey,
+    filteredAllMoviesKey, filteredSavedMoviesKey,
+    allMoviesListKey, savedMoviesListKey,
+    toggleStateAllMoviesKey, toggleStateSavedMoviesKey
+} from "../../utils/const.js"
 
 function App() {
-
     const [isNavTabOpen, setIsNavTabOpen] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
 
@@ -28,15 +34,19 @@ function App() {
     const [savedMovies, setSavedMovies] = useState([]);
     const [isFailModalOpen, setIsFailModalOpen] = useState(false);
 
-    const [shortFilmFlag, setShortFilmFlag] = useState(false);
-    const [searchedAllMovies, setSearchedAllMovies] = useState([]);
-    const [searchedSavedMovies, setSearchedSavedMovies] = useState([]);
+    const [shortFilmAllMoviesFlag,
+        setShortFilmAllMoviesFlag] = useState(localStorage.getItem(toggleStateAllMoviesKey) === 'true');
+    const [shortFilmSavedMoviesFlag,
+        setShortFilmSavedMoviesFlag] = useState(localStorage.getItem(toggleStateSavedMoviesKey) === 'true');
+
+    const [filteredAllMovies, setFilteredAllMovies] = useState([])
+    const [filteredSavedMovies, setFilteredSavedMovies] = useState([])
 
     const [isLoading, setIsLoading] = useState(false);
 
     const checkToken = useCallback(() => {
         try {
-            const jwt = localStorage.getItem('jwt');
+            const jwt = localStorage.getItem(jwtLSKey);
             if (!jwt) {
                 throw new Error('No token in storage');
             }
@@ -57,6 +67,18 @@ function App() {
         checkToken()
     }, [checkToken])
 
+    useEffect(() => {
+        if (localStorage.getItem(filteredAllMoviesKey)) {
+            setFilteredAllMovies(JSON.parse(localStorage.getItem(filteredAllMoviesKey)))
+        }
+        if (localStorage.getItem(filteredSavedMoviesKey)) {
+            setFilteredSavedMovies(JSON.parse(localStorage.getItem(filteredSavedMoviesKey)))
+        }
+        if (localStorage.getItem(savedMoviesListKey)) {
+            setSavedMovies(JSON.parse(localStorage.getItem(savedMoviesListKey)))
+        }
+    }, [])
+
     const authenticateUser = useCallback(async (email, password) => {
         try {
             const { token } = await mainApi.signInUser(email, password);
@@ -65,7 +87,7 @@ function App() {
             }
 
             if (!loggedIn) {
-                localStorage.setItem('jwt', token);
+                localStorage.setItem(jwtLSKey, token);
                 localStorage.setItem('isAuthenticated', true);
                 setLoggedIn(true);
                 // console.log(loggedIn);
@@ -99,30 +121,25 @@ function App() {
 
     function getSavedMovies() {
         if (loggedIn) {
-            // setIsLoading(true)
-            let token = localStorage.getItem('jwt')
-            mainApi.getSavedMovies(token)
+            let token = localStorage.getItem(jwtLSKey)
+            return mainApi.getSavedMovies(token)
                 .then((res) => {
-                    localStorage.setItem("savedMoviesList", JSON.stringify(res));
                     setSavedMovies(res)
-                    // setIsLoading(false)
-                    // console.log(isLoading)
+                    localStorage.setItem(savedMoviesListKey, JSON.stringify(res));
                 }
                 )
         }
     }
 
-    const getMovies = async () => {
-        // setIsLoading(true)
-        console.log(isLoading)
+    function getMovies() {
         if (loggedIn) {
-            await api.getAllMovies()
+            if (!localStorage.getItem(savedMoviesListKey)) {
+                getSavedMovies()
+            }
+            return api.getAllMovies()
                 .then((res) => {
-                    localStorage.setItem("moviesList", JSON.stringify(res));
+                    localStorage.setItem(allMoviesListKey, JSON.stringify(res));
                     setAllMovies(res.slice(0, 6), ...allMovies);
-                    getSavedMovies()
-                    // setIsLoading(false)
-                    // console.log(isLoading)
                     return res
                 })
                 .catch((err) => {
@@ -130,22 +147,6 @@ function App() {
                 })
         }
     }
-
-    // function getMovies() {
-    //     if (loggedIn) {
-    //         api.getAllMovies()
-    //             .then((res) => {
-    //                 localStorage.setItem("moviesList", JSON.stringify(res));
-    //                 // localStorage.setItem("moviesList", JSON.stringify(res));
-    //                 setMovies(res.slice(0, 6), ...movies);
-    //                 getSavedMovies()
-    //                 return res
-    //             })
-    //             .catch((err) => {
-    //                 console.log(err)
-    //             })
-    //     }
-    // }
 
     function displayMovies(array, n) {
         let [...arr] = array;
@@ -161,13 +162,9 @@ function App() {
     }
 
     function handleMovieLike(movie) {
-        console.log('Список сохраненок', savedMovies)
         let movieIsSaved = savedMovies.find((m) => m.movieId === movie.id);
-        console.log('Сохранен ли фильм?', movieIsSaved)
-        console.log('Мой фильм?', movie)
         if (loggedIn) {
-
-            let token = localStorage.getItem('jwt')
+            let token = localStorage.getItem(jwtLSKey)
             if (!movieIsSaved) {
                 console.log('save that shit')
 
@@ -184,25 +181,39 @@ function App() {
                     nameEN: movie.nameEN,
                     image: `https://api.nomoreparties.co${movie.image.url}`,
                 }
-
                 mainApi.saveMovie(movieMsg, token)
+                    .then((res) => {
+                        let newSavedMovies = [...savedMovies, res]
+                        console.log('1', newSavedMovies)
+                        setSavedMovies(newSavedMovies)
+                        localStorage.setItem(savedMoviesListKey, JSON.stringify(newSavedMovies))
+                    })
             } else {
                 console.log('delete that crap')
                 mainApi.deleteMovie(movieIsSaved._id, token)
+                let newSavedMovies = savedMovies.filter((movie) => movie._id !== movieIsSaved._id)
+                console.log('2', newSavedMovies)
+                setSavedMovies(newSavedMovies);
+                localStorage.setItem(savedMoviesListKey, JSON.stringify(newSavedMovies))
             }
-
-            getSavedMovies()
         }
     }
 
     function handleMovieDelete(movieId) {
         if (loggedIn) {
             console.log('deleting movie from saved list')
-            let token = localStorage.getItem('jwt')
+            let token = localStorage.getItem(jwtLSKey)
             mainApi.deleteMovie(movieId, token)
-                .then(() => {
-                    getSavedMovies()
-                })
+            let newSavedMovies = savedMovies.filter((movie) => movie._id !== movieId)
+            console.log('3', newSavedMovies)
+            setSavedMovies(newSavedMovies);
+            localStorage.setItem(savedMoviesListKey, JSON.stringify(newSavedMovies))
+
+            console.log('4', filteredSavedMovies)
+            let newFilteredSavedMovies = filteredSavedMovies.filter((movie) => movie._id !== movieId)
+            console.log('4.1', newFilteredSavedMovies)
+            setFilteredSavedMovies(newFilteredSavedMovies);
+            localStorage.setItem(filteredSavedMoviesKey, JSON.stringify(newFilteredSavedMovies))
         }
     }
 
@@ -218,39 +229,46 @@ function App() {
         setIsFailModalOpen(false)
     }
 
-    async function getAndFilterAllMovies(query) {
-        // setIsLoading(true)
-        // console.log(isLoading)
-        let moviesList = localStorage.getItem('moviesList')
+    const getAndFilterAllMovies = async (query) => {
+        let moviesList = localStorage.getItem(allMoviesListKey)
         if (!moviesList) {
-            moviesList = getMovies()
+            moviesList = await getMovies()
         }
-        let searchedMovies = filterMovies(JSON.parse(localStorage.getItem('moviesList')), query)
-        setSearchedAllMovies(searchedMovies)
+        let filteredMovies = filterMovies(
+            JSON.parse(localStorage.getItem(allMoviesListKey)),
+            query,
+            localStorage.getItem(toggleStateAllMoviesKey))
+        setFilteredAllMovies(filteredMovies)
 
+        localStorage.setItem(filteredAllMoviesKey, JSON.stringify(filteredMovies))
+        localStorage.setItem(localStorageQueryAllMoviesKey, query)
     }
 
-    async function getAndFilterSavedMovies(query) {
-        let moviesList = localStorage.getItem('savedMoviesList')
+    const getAndFilterSavedMovies = async (query) => {
+        let moviesList = localStorage.getItem(savedMoviesListKey)
         if (!moviesList) {
-            moviesList = getSavedMovies()
+            moviesList = await getSavedMovies()
         }
-        let searchedMovies = filterMovies(JSON.parse(localStorage.getItem('savedMoviesList')), query)
-        setSearchedSavedMovies(searchedMovies)
+        let filteredMovies = filterMovies(
+            JSON.parse(localStorage.getItem(savedMoviesListKey)),
+            query,
+            localStorage.getItem(toggleStateSavedMoviesKey))
+        setFilteredSavedMovies(filteredMovies)
+
+        localStorage.setItem(filteredSavedMoviesKey, JSON.stringify(filteredMovies))
+        localStorage.setItem(localStorageQuerySavedMoviesKey, query)
     }
 
-    function filterMovies(arr, query) {
-        let searchedMovies = arr
-        if (shortFilmFlag) {
-            searchedMovies = filterByDuration(searchedMovies)
+    function filterMovies(arr, query, shortMoviesFlag) {
+        let filteredMovies = arr
+        if (shortMoviesFlag === 'true') {
+            filteredMovies = filterByDuration(filteredMovies)
         }
 
-        const movies_by_en = searchedMovies.filter((el) => el.nameEN.toLowerCase().includes(query.toLowerCase()));
-        const movies_by_ru = searchedMovies.filter((el) => el.nameRU.toLowerCase().includes(query.toLowerCase()));
-        // setIsLoading(false)
-        // console.log(isLoading)
+        const movies_by_en = filteredMovies.filter((el) => el.nameEN.toLowerCase().includes(query.toLowerCase()));
+        const movies_by_ru = filteredMovies.filter((el) => el.nameRU.toLowerCase().includes(query.toLowerCase()));
+
         return [...new Set([...movies_by_en, ...movies_by_ru])];
-                
     }
 
     function filterByDuration(arr) {
@@ -261,32 +279,47 @@ function App() {
         return shortMovies;
     }
 
-    function shortFilmsToggleButton() {
-        if (shortFilmFlag) {
-            setShortFilmFlag(false)
+    const shortFilmsAllMoviesToggleButton = async () => {
+        if (shortFilmAllMoviesFlag) {
+            setShortFilmAllMoviesFlag(false)
+            await asyncLocalStorage.setItem(toggleStateAllMoviesKey, false)
         } else {
-            setShortFilmFlag(true)
+            setShortFilmAllMoviesFlag(true)
+            await asyncLocalStorage.setItem(toggleStateAllMoviesKey, true)
         }
+        getAndFilterAllMovies(localStorage.getItem(localStorageQueryAllMoviesKey))
+    }
+
+    function shortFilmsSavedMoviesToggleButton() {
+        if (shortFilmSavedMoviesFlag) {
+            setShortFilmSavedMoviesFlag(false)
+            localStorage.setItem(toggleStateSavedMoviesKey, false)
+        } else {
+            setShortFilmSavedMoviesFlag(true)
+            localStorage.setItem(toggleStateSavedMoviesKey, true)
+        }
+        getAndFilterSavedMovies(localStorage.getItem(localStorageQuerySavedMoviesKey))
     }
 
     function handleUpdateUser() {
         if (loggedIn) {
-const token = localStorage.getItem('jwt');
-        mainApi.updateUserProfile(token)
-          .then((res) => {
-            setCurrentUser(res)
-          })
-          .catch((err) => {
-            console.log(err)
-          })}
-      }
+            const token = localStorage.getItem('jwt');
+            mainApi.updateUserProfile(token)
+                .then((res) => {
+                    setCurrentUser(res)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        }
+    }
 
     return (
         <>
             <CurrentUserContext.Provider value={currentUser}>
                 <div className="page">
                     <Header
-                        onMenuOpen={handleMenuClick} isLoggedIn={loggedIn}/>
+                        onMenuOpen={handleMenuClick} isLoggedIn={loggedIn} />
                     <NavTab
                         isOpen={isNavTabOpen}
                         onClose={handleCloseMenuClick} />
@@ -294,28 +327,28 @@ const token = localStorage.getItem('jwt');
                         <ProtectedRoute path="/movies"
                             loggedIn={loggedIn}
                             component={Movies}
-                            movies={searchedAllMovies}
+                            movies={filteredAllMovies}
                             savedMovies={savedMovies}
                             onMoviesProlong={displayMovies}
                             onMoviePicClick={handleMoviePicClick}
                             onMovieLike={handleMovieLike}
                             onFilterMovies={getAndFilterAllMovies}
-                            shortFilmFlag={shortFilmFlag}
-                            shortFilmsToggleButton={shortFilmsToggleButton}
-                            onLoading={isLoading}
+                            shortFilmFlag={shortFilmAllMoviesFlag}
+                            shortFilmsToggleButton={shortFilmsAllMoviesToggleButton}
+                            localStorageQueryKey={localStorageQueryAllMoviesKey}
                         />
 
                         <ProtectedRoute path="/saved-movies"
                             loggedIn={loggedIn}
                             component={SavedMovies}
-                            movies={searchedSavedMovies}
+                            movies={filteredSavedMovies}
                             onMoviesProlong={displayMovies}
                             onMoviePicClick={handleMoviePicClick}
                             onMovieDelete={handleMovieDelete}
                             onFilterMovies={getAndFilterSavedMovies}
-                            shortFilmFlag={shortFilmFlag}
-                            shortFilmsToggleButton={shortFilmsToggleButton}
-
+                            shortFilmFlag={shortFilmSavedMoviesFlag}
+                            shortFilmsToggleButton={shortFilmsSavedMoviesToggleButton}
+                            localStorageQueryKey={localStorageQuerySavedMoviesKey}
                             getSavedMovies={getSavedMovies}
                         />
 

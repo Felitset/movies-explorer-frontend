@@ -22,11 +22,13 @@ function Movies(props) {
                                 Возможно, проблема с соединением или сервер недоступен. 
                                 Подождите немного и попробуйте ещё раз"
                     onClose={handleModalClose} />}
+
                 <SearchForm
                     onFilterMovies={props.onFilterMovies}
                     filterByDuration={props.filterByDuration}
                     shortFilmsToggleButton={props.shortFilmsToggleButton}
                     shortFilmFlag={props.shortFilmFlag}
+                    localStorageQueryKey={props.localStorageQueryKey}
 
                     movies={props.movies} />
 

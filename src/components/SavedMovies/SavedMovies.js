@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import './SavedMovies.css';
 import SearchForm from '../Movies/SearchForm/SearchForm';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
@@ -12,11 +12,6 @@ function SavedMovies(props) {
         setIsFailModalOpen(false)
     }
 
-
-    useEffect(() => {
-        props.onFilterMovies('')
-    }, [])
-
     return (
         <>
             <main className="page__saved_movies">
@@ -24,12 +19,14 @@ function SavedMovies(props) {
                     title="..."
                     onClose={handleModalClose}
                 />}
+
                 <SearchForm
                     onFilterMovies={props.onFilterMovies}
                     filterByDuration={props.filterByDuration}
                     shortFilmsToggleButton={props.shortFilmsToggleButton}
                     shortFilmFlag={props.shortFilmFlag}
                     movies={props.movies}
+                    localStorageQueryKey={props.localStorageQueryKey}
                 />
 
                 <MoviesCardList
