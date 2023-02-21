@@ -7,38 +7,22 @@ import { useFormWithValidation } from '../FormValidator';
 function Login({ isLoggedIn, onLogin }) {
 
     const validateInput = useFormWithValidation();
-
     const { email, password } = validateInput.errors;
+
     const errorClassName = !validateInput.isValid
-      ? 'login__error login__error_active'
-      : 'login__error';
-  
+        ? 'login__error login__error_active'
+        : 'login__error';
+
     const buttonState = !validateInput.isValid
-    ? 'login__button'
-    : 'login__button_status_active';
-  
+        ? 'login__button'
+        : 'login__button_status_active';
+
     const handleSubmit = (e) => {
-      e.preventDefault();
-      const { email, password } = validateInput.values;
-      onLogin(email, password);
-      validateInput.resetForm();
+        e.preventDefault();
+        const { email, password } = validateInput.values;
+        onLogin(email, password);
+        validateInput.resetForm();
     };
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    })
-
-    const handleChange = useCallback((event) => {
-        const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value })
-    }, [formData]);
-
-
-
-    const submitChange = useCallback((event) => {
-        event.preventDefault()
-        onLogin(validateInput.values.email, validateInput.values.password)
-    }, [onLogin, formData])
 
     if (isLoggedIn) {
         return (<Redirect to="/movies" />)
@@ -55,9 +39,9 @@ function Login({ isLoggedIn, onLogin }) {
                 />
                 <h1 className="login__title">Рады видеть!</h1>
             </div>
-            <form 
-            className="login__form" noValidate
-            onSubmit={handleSubmit}>
+            <form
+                className="login__form" noValidate
+                onSubmit={handleSubmit}>
                 <label className="input__title">E-mail</label>
                 <input
                     className="input login__email-input"
@@ -82,13 +66,14 @@ function Login({ isLoggedIn, onLogin }) {
                     value={validateInput?.values?.password || ''}
                     required
                 ></input>
-                 <span className={errorClassName}>{password}</span>
+                <span className={errorClassName}>{password}</span>
             </form>
             <button
                 className={buttonState}
                 type="submit"
-                onClick={submitChange}
-                disabled={!validateInput.isValid}>Войти</button>
+                onClick={handleSubmit}
+                // disabled={!validateInput.isValid}
+                >Войти</button>
             <div className="if-unregistered_line">
                 <p className="non-registered_line">Ещё не зарегистрированы? </p>
                 <Link to={'/signup'} className="login-to-register_link">Регистрация</Link>
