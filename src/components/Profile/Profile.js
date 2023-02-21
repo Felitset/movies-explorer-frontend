@@ -1,33 +1,33 @@
-import React, { useContext, useCallback, useState} from "react";
+import React, { useContext } from "react";
 import './Profile.css';
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { useFormWithValidation } from '../FormValidator';
 
 function Profile({onUpdateProfile, onLogout}) {
-    const {name, email} = useContext(CurrentUserContext);
-    console.log('i pring when Profile runs');
+    const userInfo = useContext(CurrentUserContext);
+
     const validateInput = useFormWithValidation();
+    const { nameEr, emailEr } = validateInput.errors;
 
-    const [formData, setFormData] = useState({
-        name: name,
-        email: email
-    })
+    const errorClassName = !validateInput.isValid
+        ? 'profile__error profile__error_active'
+        : 'profile__error';
 
-    const handleChange = useCallback((event) => {
-        const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value })
-    }, [formData]);
+    const buttonState = !validateInput.isValid
+        ? 'profile__update_btn'
+        : 'profile__update_btn_active';
 
-function handleSubmit(e) {
-    e.preventDefault()
-    const { name, email } = validateInput.values;
-    onUpdateProfile(name, email);
-    validateInput.resetForm();
-}
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const { name, email } = validateInput.values;
+        onUpdateProfile( name, email );
+        validateInput.resetForm();
+    };
+
 
     return (
         <div className="profile main__profile">
-            <h1 className='profile__greeting'>Привет, {name}</h1>
+            <h1 className='profile__greeting'>Привет, {userInfo.name}</h1>
             <form 
             id='update_user_info' 
             className="profile__update_form form__input"
@@ -35,31 +35,37 @@ function handleSubmit(e) {
                 <span className='profile__input_block'>
                     <label className="profile__input_label">Имя</label>
                     <input 
-                    className="profile__update_input form__input" 
-                    id="update_name_input"
+                    className="profile__update_input" 
+                    nameEr="nameEr"
+                    type="name"
+                    name='name'
                     onChange={validateInput.handleChange}
                     value={validateInput?.values?.name || ''}
-                    placeholder='Имя' 
-                    title='Имя'></input>
+                    placeholder={userInfo.name} 
+                    minLength="2"
+                    maxLength="30"
+                    required></input>
                 </span>
-                <span className="update_name_input-error form__input-error_message"></span>
+                <span className={errorClassName}>{nameEr}</span>
 
                 <span className='profile__input_block'>
                     <label className="profile__input_label">E-mail</label>
                     <input 
-                    className="profile__update_input form__input"
-                    id="update_email_input"
+                    className="profile__update_input"
+                    id="email"
+                    type='email'
+                    name='email'
+                    nameEr='emailEr'
                     onChange={validateInput.handleChange}
                     value={validateInput?.values?.email || ''}
-                    placeholder='Email' 
-                    title='E-mail'></input>
+                    placeholder={userInfo.email}
+                    required></input>
                 </span>
-                <span className="update_email_input-error form__input-error_message"></span>
-
-                <button 
-                className="profile__update_btn_active form__button" 
+                <span className={errorClassName}>{emailEr}</span>
+                <button className={buttonState} 
                 type='submit'
-                onSubmit={handleSubmit}>Редактировать</button>
+                onClick={handleSubmit}
+                >Редактировать</button>
             </form>
             <button
                 className="profile__exit_btn"

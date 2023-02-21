@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import { Link, withRouter, Redirect } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import './Login.css';
@@ -64,6 +64,7 @@ function Login({ isLoggedIn, onLogin }) {
                     name="password"
                     onChange={validateInput.handleChange}
                     value={validateInput?.values?.password || ''}
+                    minLength='8'
                     required
                 ></input>
                 <span className={errorClassName}>{password}</span>
@@ -72,7 +73,6 @@ function Login({ isLoggedIn, onLogin }) {
                 className={buttonState}
                 type="submit"
                 onClick={handleSubmit}
-                // disabled={!validateInput.isValid}
                 >Войти</button>
             <div className="if-unregistered_line">
                 <p className="non-registered_line">Ещё не зарегистрированы? </p>

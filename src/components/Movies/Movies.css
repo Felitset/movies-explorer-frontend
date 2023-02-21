@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.expand_list_btn_hidden {
+    display: none;
+}
+
 .expand_list_btn {
     background-color: #F9F9F9;
     border-radius: 6px;

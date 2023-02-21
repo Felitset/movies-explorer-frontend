@@ -14,6 +14,10 @@ function Movies(props) {
         setIsFailModalOpen(false)
     }
 
+    const buttonClass = moreButtonEnabled
+    ? 'expand_list_btn'
+    : 'expand_list_btn_hidden';
+
     return (
         <>
             <main className="page__movies">
@@ -47,7 +51,7 @@ function Movies(props) {
                 <div className='expand_list'>
                     <button
                         type="button"
-                        className='expand_list_btn'
+                        className={buttonClass}
                     // onClick={handleListExtention}
                     >Ещё</button>
                 </div>

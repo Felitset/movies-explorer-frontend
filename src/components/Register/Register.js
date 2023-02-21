@@ -1,25 +1,29 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import { Link, withRouter, Redirect } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import './Register.css';
+import { useFormWithValidation } from '../FormValidator';
 
 function Register({ isLoggedIn, onRegister }) {
 
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: ''
-    })
+ const validateInput = useFormWithValidation();
+    const { name, email, password } = validateInput.errors;
 
-    const handleChange = useCallback((event) => {
-        const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value })
-    }, [formData]);
+    const errorClassName = !validateInput.isValid
+        ? 'register__error register__error_active'
+        : 'register__error';
 
-    const submitChange = useCallback((event) => {
-        event.preventDefault()
-        onRegister(formData.name, formData.email, formData.password)
-    }, [onRegister, formData])
+    const buttonState = !validateInput.isValid
+        ? 'register__button'
+        : 'register__button_status_active';
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const { name, email, password } = validateInput.values;
+        onRegister(name, email, password);
+        validateInput.resetForm();
+    };
+
 
     if (isLoggedIn) {
         return (<Redirect to="/movies" />)
@@ -36,44 +40,47 @@ function Register({ isLoggedIn, onRegister }) {
                 />
                 <h1 className="register__title">Добро пожаловать!</h1>
             </div>
-            <form className="register__form" onSubmit={submitChange}>
+            <form className="register__form">
                 <p className="input_title">Имя</p>
                 <input
                     className="input register_name-input"
                     id="name"
                     type="name"
                     name="name"
-                    onChange={handleChange}
-                    value={formData.name}
+                    onChange={validateInput.handleChange}
+                    value={validateInput?.values?.name || ''}
                     required
+                    minLength="2"
+                    maxLength="30"
                 ></input>
-                <span className="input-error"></span>
+                <span className={errorClassName}>{name}</span>
                 <p className="input_title">E-mail</p>
                 <input
                     className="input register_email-input"
                     id="email"
                     type="email"
                     name="email"
-                    onChange={handleChange}
-                    value={formData.email}
+                    onChange={validateInput.handleChange}
+                    value={validateInput?.values?.email || ''}
                     required
                 ></input>
-                <span className="input-error"></span>
+                <span className={errorClassName}>{email}</span>
                 <p className="input_title">Пароль</p>
                 <input
                     className="input register_password-input"
                     id="password"
                     type="password"
                     name="password"
-                    onChange={handleChange}
-                    value={formData.password}
+                    onChange={validateInput.handleChange}
+                    value={validateInput?.values?.password || ''}
                     required
+                    minLength='8'
                 ></input>
-                <span className="input-error"></span>
+                <span className={errorClassName}>{password}</span>
             </form>
-            <button className="register__button"
+            <button className={buttonState}
                 type="submit"
-                onClick={submitChange}
+                onClick={handleSubmit}
             >Зарегистрироваться</button>
             <div className="if-registered_line">
                 <p className="registered_line">Уже зарегистрированы?</p>
