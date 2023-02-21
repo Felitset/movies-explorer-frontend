@@ -5,18 +5,28 @@ import Preloader from './Preloader/Preloader';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import InfoTooltip from "../InfoToolTip/InfoToolTip";
+import { filteredAllMoviesKey } from "../../utils/const";
 
 function Movies(props) {
-
     const [isFailModalOpen, setIsFailModalOpen] = useState(false);
 
+    const nothingFoundShow = ` ${localStorage.getItem(filteredAllMoviesKey) === [] ? 'nothing_found_hide' : 'nothing_found_show' }`;
+
+    const pageStep = 7;
+    const [lastItemIndex, setLastItemIndex] = useState(pageStep);
+
     function handleModalClose() {
-        setIsFailModalOpen(false)
+        setIsFailModalOpen(false);
     }
 
-    const buttonClass = moreButtonEnabled
-    ? 'expand_list_btn'
-    : 'expand_list_btn_hidden';
+    function handleListExtention() {
+        setLastItemIndex(lastItemIndex + pageStep);
+    }
+
+    function onFilterMovies(searchQuery) {
+        setLastItemIndex(pageStep);
+        props.onFilterMovies(searchQuery);
+    }
 
     return (
         <>
@@ -28,21 +38,22 @@ function Movies(props) {
                     onClose={handleModalClose} />}
 
                 <SearchForm
-                    onFilterMovies={props.onFilterMovies}
+                    onFilterMovies={onFilterMovies}
                     filterByDuration={props.filterByDuration}
                     shortFilmsToggleButton={props.shortFilmsToggleButton}
                     shortFilmFlag={props.shortFilmFlag}
                     localStorageQueryKey={props.localStorageQueryKey}
-
                     movies={props.movies} />
 
-                {props.onLoading && <Preloader 
-                // customLoading={props.onLoading}
-                // time={0}
+                {<div className={nothingFoundShow}>
+                    Ничего не найдено</div>}
+
+                {props.onLoading && <Preloader
+                    time={5000}
                 />}
 
                 <MoviesCardList
-                    movies={props.movies}
+                    movies={props.movies.slice(0, lastItemIndex)}
                     savedMovies={props.savedMovies}
                     onMoviePicClick={props.onMoviePicClick}
                     onMovieLike={props.onMovieLike}
@@ -51,8 +62,8 @@ function Movies(props) {
                 <div className='expand_list'>
                     <button
                         type="button"
-                        className={buttonClass}
-                    // onClick={handleListExtention}
+                        className={lastItemIndex >= props.movies.length ? 'expand_list_btn_hidden' : 'expand_list_btn'}
+                        onClick={handleListExtention}
                     >Ещё</button>
                 </div>
             </main>

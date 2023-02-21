@@ -33,7 +33,7 @@ function App() {
     const [allMovies, setAllMovies] = useState([]);
     const [savedMovies, setSavedMovies] = useState([]);
     const [isFailModalOpen, setIsFailModalOpen] = useState(false);
-
+ 
     const [shortFilmAllMoviesFlag,
         setShortFilmAllMoviesFlag] = useState(localStorage.getItem(toggleStateAllMoviesKey) === 'true');
     const [shortFilmSavedMoviesFlag,
@@ -60,7 +60,9 @@ function App() {
                 })
 
             }
-        } catch { }
+        } catch {
+            setIsFailModalOpen(true);
+        }
     }, [])
 
     useEffect(() => {
@@ -83,6 +85,7 @@ function App() {
         try {
             const { token } = await mainApi.signInUser(email, password);
             if (!token) {
+                setIsFailModalOpen(true);
                 throw new Error('No token');
             }
 
@@ -90,27 +93,21 @@ function App() {
                 localStorage.setItem(jwtLSKey, token);
                 localStorage.setItem('isAuthenticated', true);
                 setLoggedIn(true);
-                // console.log(loggedIn);
-                // return (<Redirect to='/movies' />)
             }
-
-            // if (localStorage.getItem('jwt')) {
-            //     setLoggedIn(true);
-            //     console.log(loggedIn);
-            // }
-        } catch { }
+        } catch {
+            setIsFailModalOpen(true);
+        }
     }, [loggedIn]);
 
     const registerUser = useCallback(async (name, email, password) => {
         try {
             const data = await mainApi.signUpUser(name, email, password);
             if (!data) {
+                setIsFailModalOpen(true);
                 throw new Error('No data');
             }
-            console.log('успех регистрации')
         } catch {
-            setIsFailModalOpen(true)
-            console.log('ошибка регистрации')
+            setIsFailModalOpen(true);
         }
     }, []);
 
@@ -166,8 +163,6 @@ function App() {
         if (loggedIn) {
             let token = localStorage.getItem(jwtLSKey)
             if (!movieIsSaved) {
-                console.log('save that shit')
-
                 let movieMsg = {
                     country: movie.country,
                     director: movie.director,
@@ -184,15 +179,12 @@ function App() {
                 mainApi.saveMovie(movieMsg, token)
                     .then((res) => {
                         let newSavedMovies = [...savedMovies, res]
-                        console.log('1', newSavedMovies)
                         setSavedMovies(newSavedMovies)
                         localStorage.setItem(savedMoviesListKey, JSON.stringify(newSavedMovies))
                     })
             } else {
-                console.log('delete that crap')
                 mainApi.deleteMovie(movieIsSaved._id, token)
                 let newSavedMovies = savedMovies.filter((movie) => movie._id !== movieIsSaved._id)
-                console.log('2', newSavedMovies)
                 setSavedMovies(newSavedMovies);
                 localStorage.setItem(savedMoviesListKey, JSON.stringify(newSavedMovies))
             }
@@ -201,17 +193,12 @@ function App() {
 
     function handleMovieDelete(movieId) {
         if (loggedIn) {
-            console.log('deleting movie from saved list')
             let token = localStorage.getItem(jwtLSKey)
             mainApi.deleteMovie(movieId, token)
             let newSavedMovies = savedMovies.filter((movie) => movie._id !== movieId)
-            console.log('3', newSavedMovies)
             setSavedMovies(newSavedMovies);
             localStorage.setItem(savedMoviesListKey, JSON.stringify(newSavedMovies))
-
-            console.log('4', filteredSavedMovies)
             let newFilteredSavedMovies = filteredSavedMovies.filter((movie) => movie._id !== movieId)
-            console.log('4.1', newFilteredSavedMovies)
             setFilteredSavedMovies(newFilteredSavedMovies);
             localStorage.setItem(filteredSavedMoviesKey, JSON.stringify(newFilteredSavedMovies))
         }
@@ -226,10 +213,11 @@ function App() {
     }
 
     function handleModalClose() {
-        setIsFailModalOpen(false)
+        setIsFailModalOpen(false);
     }
 
     const getAndFilterAllMovies = async (query) => {
+        setIsLoading(true)
         let moviesList = localStorage.getItem(allMoviesListKey)
         if (!moviesList) {
             moviesList = await getMovies()
@@ -245,6 +233,7 @@ function App() {
     }
 
     const getAndFilterSavedMovies = async (query) => {
+        setIsLoading(true);
         let moviesList = localStorage.getItem(savedMoviesListKey)
         if (!moviesList) {
             moviesList = await getSavedMovies()
@@ -260,6 +249,7 @@ function App() {
     }
 
     function filterMovies(arr, query, shortMoviesFlag) {
+        setIsLoading(true);
         let filteredMovies = arr
         if (shortMoviesFlag === 'true') {
             filteredMovies = filterByDuration(filteredMovies)
@@ -268,6 +258,7 @@ function App() {
         const movies_by_en = filteredMovies.filter((el) => el.nameEN.toLowerCase().includes(query.toLowerCase()));
         const movies_by_ru = filteredMovies.filter((el) => el.nameRU.toLowerCase().includes(query.toLowerCase()));
 
+        setIsLoading(false);
         return [...new Set([...movies_by_en, ...movies_by_ru])];
     }
 
@@ -280,6 +271,7 @@ function App() {
     }
 
     const shortFilmsAllMoviesToggleButton = async () => {
+        setIsLoading(true)
         if (shortFilmAllMoviesFlag) {
             setShortFilmAllMoviesFlag(false)
             await asyncLocalStorage.setItem(toggleStateAllMoviesKey, false)
@@ -301,15 +293,15 @@ function App() {
         getAndFilterSavedMovies(localStorage.getItem(localStorageQuerySavedMoviesKey))
     }
 
-    function handleUpdateUser() {
+    function handleUpdateUser(userInfo) {
         if (loggedIn) {
             const token = localStorage.getItem('jwt');
-            mainApi.updateUserProfile(token)
+            mainApi.updateUserProfile(token, userInfo)
                 .then((res) => {
                     setCurrentUser(res)
                 })
                 .catch((err) => {
-                    console.log(err)
+                    setIsFailModalOpen(true);
                 })
         }
     }
@@ -327,6 +319,7 @@ function App() {
                         <ProtectedRoute path="/movies"
                             loggedIn={loggedIn}
                             component={Movies}
+                            onLoading={isLoading}
                             movies={filteredAllMovies}
                             savedMovies={savedMovies}
                             onMoviesProlong={displayMovies}
@@ -361,6 +354,9 @@ function App() {
 
                         <Route path="/signin">
                             <Login isLoggedIn={loggedIn} onLogin={authenticateUser} />
+                            {isFailModalOpen && <InfoTooltip
+                                title="Что-то пошло не так! Попробуйте ещё раз."
+                                onClose={handleModalClose} />}
                         </Route>
 
                         <Route path="/signup">

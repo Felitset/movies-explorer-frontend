@@ -9,9 +9,9 @@ export function useFormWithValidation() {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-    const nameEr = target.nameEr;
+    // const nameEr = target.nameEr;
     setValues({...values, [name]: value});
-    setErrors({...errors, [nameEr]: target.validationMessage });
+    setErrors({...errors, [name]: target.validationMessage });
     setIsValid(target.closest("form").checkValidity());
   };
 

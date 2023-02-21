@@ -7,7 +7,7 @@ function Profile({onUpdateProfile, onLogout}) {
     const userInfo = useContext(CurrentUserContext);
 
     const validateInput = useFormWithValidation();
-    const { nameEr, emailEr } = validateInput.errors;
+    const { name, email } = validateInput.errors;
 
     const errorClassName = !validateInput.isValid
         ? 'profile__error profile__error_active'
@@ -20,14 +20,17 @@ function Profile({onUpdateProfile, onLogout}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const { name, email } = validateInput.values;
-        onUpdateProfile( name, email );
+        onUpdateProfile( {
+            name: name,
+            email: email
+        })
         validateInput.resetForm();
     };
 
 
     return (
         <div className="profile main__profile">
-            <h1 className='profile__greeting'>Привет, {userInfo.name}</h1>
+            <h1 className='profile__greeting'>Привет, {userInfo.name}!</h1>
             <form 
             id='update_user_info' 
             className="profile__update_form form__input"
@@ -36,17 +39,17 @@ function Profile({onUpdateProfile, onLogout}) {
                     <label className="profile__input_label">Имя</label>
                     <input 
                     className="profile__update_input" 
-                    nameEr="nameEr"
                     type="name"
                     name='name'
                     onChange={validateInput.handleChange}
-                    value={validateInput?.values?.name || ''}
+                    value={validateInput?.values?.name ?? userInfo.name}
                     placeholder={userInfo.name} 
                     minLength="2"
                     maxLength="30"
+                    pattern='^[A-Za-z -]+$'
                     required></input>
                 </span>
-                <span className={errorClassName}>{nameEr}</span>
+                <span className={errorClassName}>{name}</span>
 
                 <span className='profile__input_block'>
                     <label className="profile__input_label">E-mail</label>
@@ -55,13 +58,12 @@ function Profile({onUpdateProfile, onLogout}) {
                     id="email"
                     type='email'
                     name='email'
-                    nameEr='emailEr'
                     onChange={validateInput.handleChange}
-                    value={validateInput?.values?.email || ''}
+                    value={validateInput?.values?.email ?? userInfo.email}
                     placeholder={userInfo.email}
                     required></input>
                 </span>
-                <span className={errorClassName}>{emailEr}</span>
+                <span className={errorClassName}>{email}</span>
                 <button className={buttonState} 
                 type='submit'
                 onClick={handleSubmit}

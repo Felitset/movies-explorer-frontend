@@ -15,7 +15,6 @@ function MoviesCardList(props) {
                     onMoviePicClick={props.onMoviePicClick}
                     onMovieLike={props.onMovieLike}
                     onMovieDislike={props.onMovieDislike} />)}
-
             </ul>
         </section>
     )

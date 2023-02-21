@@ -81,9 +81,8 @@
     font-weight: 400;
     font-size: 10px;
     line-height: 12px;
-
     color: #FF4062;
-    max-width: 296px;
+    max-width: 100%;
 }
 
 .profile__update_btn {

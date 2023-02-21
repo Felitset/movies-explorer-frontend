@@ -12,6 +12,7 @@
     right: 0;
     font-family: 'Inter', 'Arial', sans-serif;
     padding-bottom: 20px;
+    z-index: 1;
 }
 
 .nav-tab__body {

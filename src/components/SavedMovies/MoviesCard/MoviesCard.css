@@ -5,6 +5,11 @@
     padding-left: 22px;
     align-items: center;
     font-family: 'Inter', 'Arial', sans-serif;
+    margin-bottom: 40px;
+}
+
+.saved_movies__card:last-of-type {
+    margin-bottom: 0;
 }
 
 .movie_card__info {
@@ -54,6 +59,7 @@
         padding-left: 0;
         max-width: 100%;
         height: 232px;
+        margin-bottom: 20px;
     }
 
     .movie_card__info {

@@ -1,3 +1,19 @@
+.nothing_found_show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F3C1F8;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    margin: 20px auto;
+
+}
+
+.nothing_found_hide {
+    display: none;
+}
+
 .expand_list {
     background-color: #FFFFFF;
     display: flex;

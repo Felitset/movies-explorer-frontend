@@ -36,14 +36,18 @@ export const getUserProfile = async (token) => {
     return checkResponse(res);
 }
 
-export const updateUserProfile = async (token) => {
+export const updateUserProfile = async (token, userInfo) => {
     const res = await fetch(`${apiAuthHost}/users/me`, {
         method: 'PATCH',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
-        }
+        },
+        body: JSON.stringify({
+            name: userInfo.name,
+            email: userInfo.email
+        })
     })
     return checkResponse(res);
 }
