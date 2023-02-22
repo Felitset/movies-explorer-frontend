@@ -10,7 +10,7 @@ import { filteredAllMoviesKey } from "../../utils/const";
 function Movies(props) {
     const [isFailModalOpen, setIsFailModalOpen] = useState(false);
 
-    const nothingFoundShow = ` ${localStorage.getItem(filteredAllMoviesKey) === [] ? 'nothing_found_hide' : 'nothing_found_show'}`;
+    const nothingFoundShow = ` ${localStorage.getItem(filteredAllMoviesKey) === [] ? 'nothing_found_show' : 'nothing_found_hide'}`;
 
     const pageStep = 7;
     const [lastItemIndex, setLastItemIndex] = useState(pageStep);

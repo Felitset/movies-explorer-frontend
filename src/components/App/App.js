@@ -61,7 +61,7 @@ function App() {
 
             }
         } catch {
-            setIsFailModalOpen(true);
+            console.log('ошибка проверки токена')
         }
     }, [])
 

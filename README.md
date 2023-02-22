@@ -6,3 +6,5 @@
 
 Ссылка на pull-request: https://github.com/Felitset/movies-explorer-frontend/pull/2
 
+Ссылка на полную Дипломную работу: https://diploma.olga-fr.nomoredomains.rocks/
+
