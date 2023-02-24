@@ -58,7 +58,6 @@ function App() {
                         email: data.email
                     })
                 })
-
             }
         } catch {
             console.log('ошибка проверки токена')
@@ -84,14 +83,15 @@ function App() {
     const authenticateUser = useCallback(async (email, password) => {
         try {
             const { token } = await mainApi.signInUser(email, password);
+            
             if (!token) {
                 setIsFailModalOpen(true);
                 throw new Error('No token');
             }
 
             if (!loggedIn) {
-                localStorage.setItem(jwtLSKey, token);
-                localStorage.setItem('isAuthenticated', true);
+                await asyncLocalStorage.setItem(jwtLSKey, token);
+                await asyncLocalStorage.setItem('isAuthenticated', true);
                 setLoggedIn(true);
             }
         } catch {
@@ -101,11 +101,13 @@ function App() {
 
     const registerUser = useCallback(async (name, email, password) => {
         try {
-            const data = await mainApi.signUpUser(name, email, password);
+            const data = await mainApi.signUpUser(name, email, password)
+
             if (!data) {
                 setIsFailModalOpen(true);
                 throw new Error('No data');
             }
+            authenticateUser(email, password)
         } catch {
             setIsFailModalOpen(true);
         }
