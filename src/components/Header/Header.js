@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, Redirect, useLocation } from 'react-router-dom';
-import logo from '../../images/logo.svg';
+import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
 
@@ -23,9 +22,9 @@ function Header(props) {
                     />
                     <div className={headerBtns}>
                         <Link to='/signup' className='header__btns_registration-link'>Регистрация</Link>
-                        <button
+                        <Link
                             className="header__btns_login_btn"
-                            onClick={() => window.open("/signin")}>Войти</button>
+                            to="/signin">Войти</Link>
                     </div>
                     <Navigation isLoggedIn={props.isLoggedIn} />
                     <Link
