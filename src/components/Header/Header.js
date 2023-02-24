@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, Redirect, useLocation } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
@@ -17,11 +17,9 @@ function Header(props) {
             {pathname === '/' &&
                 <header className="page__header header header__main-page" >
 
-                    <img
+                    <Link
                         className="header__logo"
-                        src={logo}
-                        alt="Логотип"
-                        onClick={() => window.open("/")}
+                        to="/"
                     />
                     <div className={headerBtns}>
                         <Link to='/signup' className='header__btns_registration-link'>Регистрация</Link>
@@ -29,71 +27,65 @@ function Header(props) {
                             className="header__btns_login_btn"
                             onClick={() => window.open("/signin")}>Войти</button>
                     </div>
-                        <Navigation isLoggedIn={props.isLoggedIn}/>
-                        <Link
-                            className={loggedHeader}
-                            to="/profile" />
-                        <button
-                            className={loggedMenu}
-                            onClick={props.onMenuOpen}
-                        />
+                    <Navigation isLoggedIn={props.isLoggedIn} />
+                    <Link
+                        className={loggedHeader}
+                        to="/profile" />
+                    <button
+                        className={loggedMenu}
+                        onClick={props.onMenuOpen}
+                    />
                 </header>}
 
             {pathname === '/movies' &&
                 <header className="page__header header" >
 
-                    <img
+                    <Link
                         className="header__logo"
-                        src={logo}
-                        alt="Логотип"
-                        onClick={() => window.open("/")}
+                        to="/"
                     />
-                        <Navigation />
-                        <Link
-                            className={loggedHeader}
-                            to="/profile" />
-                        <button
-                            className='header__menu_button'
-                            onClick={props.onMenuOpen}
-                        />
+                    <Navigation />
+                    <Link
+                        className={loggedHeader}
+                        to="/profile" />
+                    <button
+                        className='header__menu_button'
+                        onClick={props.onMenuOpen}
+                    />
                 </header>}
 
             {pathname === '/saved-movies' &&
                 <header className="page__header header" >
 
-                    <img
+                    <Link
                         className="header__logo"
-                        src={logo}
-                        alt="Логотип"
-                        onClick={() => window.open("/")}
+                        to="/"
                     />
                     <Navigation />
                     <Link
-                            className={loggedHeader}
-                            to="/profile" />
-                        <button
-                            className='header__menu_button'
-                            onClick={props.onMenuOpen}
-                        />
+                        className={loggedHeader}
+                        to="/profile" />
+                    <button
+                        className='header__menu_button'
+                        onClick={props.onMenuOpen}
+                    />
                 </header>}
 
             {pathname === '/profile' &&
                 <header className="page__header header" >
 
-                    <img
+                    <Link
                         className="header__logo"
-                        src={logo}
-                        alt="Логотип"
-                        onClick={() => window.open("/")}
+                        to="/"
                     />
                     <Navigation />
                     <Link
-                            className={loggedHeader}
-                            to="/profile" />
-                        <button
-                            className='header__menu_button'
-                            onClick={props.onMenuOpen}
-                        />
+                        className={loggedHeader}
+                        to="/profile" />
+                    <button
+                        className='header__menu_button'
+                        onClick={props.onMenuOpen}
+                    />
                 </header>}
         </>
     )
