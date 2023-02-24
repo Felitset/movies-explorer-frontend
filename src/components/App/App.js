@@ -47,6 +47,7 @@ function App() {
     const checkToken = useCallback(() => {
         try {
             const jwt = localStorage.getItem(jwtLSKey);
+
             if (!jwt) {
                 throw new Error('No token in storage');
             }
@@ -83,7 +84,7 @@ function App() {
     const authenticateUser = useCallback(async (email, password) => {
         try {
             const { token } = await mainApi.signInUser(email, password);
-            
+
             if (!token) {
                 setIsFailModalOpen(true);
                 throw new Error('No token');
