@@ -4,7 +4,7 @@ import SearchForm from './SearchForm/SearchForm';
 import Preloader from './Preloader/Preloader';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
-import InfoTooltip from "../InfoToolTip/InfoToolTip";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import { filteredAllMoviesKey } from "../../utils/const";
 
 function Movies(props) {
@@ -52,7 +52,7 @@ function Movies(props) {
                     <MoviesCardList
                         movies={props.movies.slice(0, lastItemIndex)}
                         savedMovies={props.savedMovies}
-                        onMoviePicClick={props.onMoviePicClick}
+                        onMovieCardClick={props.onMovieCardClick}
                         onMovieLike={props.onMovieLike}
                     />
                 }

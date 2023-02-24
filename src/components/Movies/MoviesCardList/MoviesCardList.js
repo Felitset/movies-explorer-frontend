@@ -12,7 +12,7 @@ function MoviesCardList(props) {
                     savedMovies={props.savedMovies}
                     movieTitle={movie.nameRU}
                     moviePic={`https://api.nomoreparties.co${movie.image.url}`}
-                    onMoviePicClick={props.onMoviePicClick}
+                    onMovieCardClick={props.onMovieCardClick}
                     onMovieLike={props.onMovieLike}
                     onMovieDislike={props.onMovieDislike} />)}
             </ul>

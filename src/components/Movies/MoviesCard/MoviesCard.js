@@ -3,8 +3,8 @@ import './MoviesCard.css';
 
 function MoviesCard(props) {
 
-    function handlePicClick() {
-        props.onMoviePicClick(props.movie);
+    function handleCardClick() {
+        props.onMovieCardClick(props.movie.trailerLink);
     }
 
     function duration(t) {
@@ -32,7 +32,7 @@ function MoviesCard(props) {
 
     return (
      
-        <li key={props.movie.id} className='movie_card'>
+        <li key={props.movie.id} className='movie_card' onClick={handleCardClick}>
             <div className='movie_card__info'>
                 <h2 className='movie_title'>{props.movieTitle}</h2>
                 <p className='movie_duration'>{duration(props.movie.duration)}</p>
@@ -47,7 +47,8 @@ function MoviesCard(props) {
                 className='movie_card__pic'
                 src={props.moviePic}
                 alt='Афиша фильма' 
-                onClick={()=>{handlePicClick()}}/>
+                // onClick={()=>{handlePicClick()}}
+                />
         </li>
          
     )

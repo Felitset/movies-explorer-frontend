@@ -15,7 +15,7 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import NavTab from '../Main/NavTab/NavTab';
 import '../../index.css';
 import * as mainApi from '../../utils/MainApi';
-import InfoTooltip from '../InfoToolTip/InfoToolTip';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import asyncLocalStorage from '../../utils/async_local_storage.js'
 import {
     jwtLSKey, localStorageQueryAllMoviesKey, localStorageQuerySavedMoviesKey,
@@ -157,7 +157,7 @@ function App() {
         return res;
     }
 
-    function handleMoviePicClick(link) {
+    function handleMovieCardClick(link) {
         window.open(`${link}`)
     }
 
@@ -326,7 +326,7 @@ function App() {
                             movies={filteredAllMovies}
                             savedMovies={savedMovies}
                             onMoviesProlong={displayMovies}
-                            onMoviePicClick={handleMoviePicClick}
+                            onMovieCardClick={handleMovieCardClick}
                             onMovieLike={handleMovieLike}
                             onFilterMovies={getAndFilterAllMovies}
                             shortFilmFlag={shortFilmAllMoviesFlag}
@@ -339,7 +339,7 @@ function App() {
                             component={SavedMovies}
                             movies={filteredSavedMovies}
                             onMoviesProlong={displayMovies}
-                            onMoviePicClick={handleMoviePicClick}
+                            onMovieCardClick={handleMovieCardClick}
                             onMovieDelete={handleMovieDelete}
                             onFilterMovies={getAndFilterSavedMovies}
                             shortFilmFlag={shortFilmSavedMoviesFlag}

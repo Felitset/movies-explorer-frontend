@@ -3,7 +3,7 @@ import './SavedMovies.css';
 import SearchForm from '../Movies/SearchForm/SearchForm';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
-import InfoTooltip from "../InfoToolTip/InfoToolTip";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import Preloader from "../Movies/Preloader/Preloader"
 
 function SavedMovies(props) {
@@ -32,7 +32,7 @@ function SavedMovies(props) {
                 {props.loading ? <Preloader /> :
                     <MoviesCardList
                         movies={props.movies}
-                        onMoviePicClick={props.onMoviePicClick}
+                        onMovieCardClick={props.onMovieCardClick}
                         onMovieDelete={props.onMovieDelete} />}
             </main>
             <Footer />

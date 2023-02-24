@@ -8,6 +8,10 @@
     margin-bottom: 40px;
 }
 
+.movie_card:hover {
+    cursor: pointer;
+}
+
 .movie_card:last-of-type {
     margin-bottom: 0;
 }
@@ -56,10 +60,6 @@
 .movie_card__pic {
     width: 220px;
     height: 122px;
-}
-
-.movie_card__pic:hover {
-    cursor: pointer;
 }
 
 @media screen and (max-width: 631px) {

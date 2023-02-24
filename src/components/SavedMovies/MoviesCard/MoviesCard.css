@@ -8,6 +8,10 @@
     margin-bottom: 40px;
 }
 
+.saved_movies__card:hover {
+    cursor: pointer;
+}
+
 .saved_movies__card:last-of-type {
     margin-bottom: 0;
 }

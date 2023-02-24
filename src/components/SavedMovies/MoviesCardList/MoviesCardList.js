@@ -12,7 +12,7 @@ function MoviesCardList(props) {
                     duration={movie.duration}
                     movieTitle={movie.nameRU}
                     moviePic={movie.image}
-                    onMoviePicClick={props.onMoviePicClick}
+                    onMovieCardClick={props.onMovieCardClick}
                     trailerLink={movie.trailerLink}
                     onMovieLike={props.onMovieLike}
                     onMovieDelete={props.onMovieDelete} 
