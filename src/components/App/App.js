@@ -44,10 +44,13 @@ function App() {
 
     const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+        checkToken()
+    }, [])
+
     const checkToken = useCallback(() => {
         try {
             const jwt = localStorage.getItem(jwtLSKey);
-
             if (!jwt) {
                 throw new Error('No token in storage');
             }
@@ -64,10 +67,6 @@ function App() {
             console.log('ошибка проверки токена')
         }
     }, [])
-
-    useEffect(() => {
-        checkToken()
-    }, [checkToken])
 
     useEffect(() => {
         if (localStorage.getItem(filteredAllMoviesKey)) {
@@ -94,6 +93,7 @@ function App() {
                 await asyncLocalStorage.setItem(jwtLSKey, token);
                 await asyncLocalStorage.setItem('isAuthenticated', true);
                 setLoggedIn(true);
+                checkToken()
             }
         } catch {
             setIsFailModalOpen(true);
@@ -115,8 +115,20 @@ function App() {
     }, []);
 
     const logout = useCallback(() => {
-        localStorage.clear();
+        Object.entries(localStorage).forEach(([key, val]) => {
+            if (!val.includes(allMoviesListKey)) delete localStorage[key];
+          });
+
         setLoggedIn(false);
+        setCurrentUser({});
+        setAllMovies([]);
+        setSavedMovies([]);
+        setIsFailModalOpen(false);
+        setShortFilmAllMoviesFlag(false);
+        setShortFilmSavedMoviesFlag(false);
+        setFilteredAllMovies([]);
+        setFilteredSavedMovies([]);
+        setLoading(false);
     }, [])
 
     function getSavedMovies() {

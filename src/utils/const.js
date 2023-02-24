@@ -5,7 +5,7 @@ export const filteredAllMoviesKey = 'filteredAllMovies'
 export const filteredSavedMoviesKey = 'filteredSavedMovies'
 
 export const allMoviesListKey = 'allMovies'
-export const savedMoviesListKey = 'savedMoviesß'
+export const savedMoviesListKey = 'savedMovies'
 
 export const toggleStateAllMoviesKey = 'toggleStateAllMovies'
 export const toggleStateSavedMoviesKey = 'toggleStateSavedMovies'
