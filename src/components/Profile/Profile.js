@@ -46,7 +46,7 @@ function Profile({onUpdateProfile, onLogout}) {
                     placeholder={userInfo.name} 
                     minLength="2"
                     maxLength="30"
-                    pattern='^[A-Za-z -]+$'
+                    pattern='^[A-Za-z А-Яа-я -]+$'
                     required></input>
                 </span>
                 <span className={errorClassName}>{name}</span>

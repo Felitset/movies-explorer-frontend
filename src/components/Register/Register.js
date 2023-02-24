@@ -52,7 +52,7 @@ function Register({ isLoggedIn, onRegister }) {
                     required
                     minLength="2"
                     maxLength="30"
-                    pattern='^[A-Za-z -]+$'
+                    pattern='^[A-Za-z А-Яа-я -]+$'
                 ></input>
                 <span className={errorClassName}>{name}</span>
                 <p className="input_title">E-mail</p>
