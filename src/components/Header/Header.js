@@ -43,7 +43,7 @@ function Header(props) {
                         className="header__logo"
                         to="/"
                     />
-                    <Navigation />
+                    <Navigation isLoggedIn={props.isLoggedIn}/>
                     <Link
                         className={loggedHeader}
                         to="/profile" />
@@ -60,7 +60,7 @@ function Header(props) {
                         className="header__logo"
                         to="/"
                     />
-                    <Navigation />
+                    <Navigation isLoggedIn={props.isLoggedIn}/>
                     <Link
                         className={loggedHeader}
                         to="/profile" />
@@ -77,7 +77,7 @@ function Header(props) {
                         className="header__logo"
                         to="/"
                     />
-                    <Navigation />
+                    <Navigation isLoggedIn={props.isLoggedIn}/>
                     <Link
                         className={loggedHeader}
                         to="/profile" />
