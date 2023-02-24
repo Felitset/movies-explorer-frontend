@@ -83,6 +83,7 @@ function Profile({ onUpdateProfile, onLogout }) {
                 <span className={errorClassName}>{email}</span>
                 <button className={buttonState}
                     type='submit'
+                    disabled={!(validateInput.isValid && nameOrEmailChanged)}
                     onClick={handleSubmit}
                 >Редактировать</button>
             </form>
