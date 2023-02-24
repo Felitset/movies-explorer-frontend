@@ -138,6 +138,7 @@ function App() {
                 .then((res) => {
                     setSavedMovies(res)
                     localStorage.setItem(savedMoviesListKey, JSON.stringify(res));
+                    setFilteredSavedMovies(res)
                 }
                 )
         }
