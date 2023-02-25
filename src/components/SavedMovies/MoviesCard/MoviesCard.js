@@ -27,7 +27,10 @@ function MoviesCard(props) {
     }
 
     return (
-        <li className='saved_movies__card' onClick={handleCardClick}>
+        <li className='saved_movies__card'
+            onClick={() => {
+                handleCardClick()
+            }}>
             <div className='movie_card__info'>
                 <h2 className='movie_title'>{props.movieTitle}</h2>
                 <p className='movie_duration'>
@@ -37,7 +40,8 @@ function MoviesCard(props) {
                     className='movie_remove_from_list'
                     src={deleteBtn}
                     alt='Знак крест. Убрать из избранного'
-                    onClick={() => {
+                    onClick={(e) => {
+                        e.stopPropagation()
                         handleMovieDelete()
                     }} />
             </div>
@@ -45,8 +49,7 @@ function MoviesCard(props) {
                 className='movie_card__pic'
                 src={props.moviePic}
                 alt='Афиша фильма'
-                // onClick={() => { handlePicClick() }} 
-                />
+            />
         </li>
     )
 }

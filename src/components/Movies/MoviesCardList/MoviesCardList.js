@@ -3,6 +3,7 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard.js';
 
 function MoviesCardList(props) {
+    
     return (
         <section className='main__movies movies'>
             <ul className='movies__card_list'>
@@ -14,7 +15,8 @@ function MoviesCardList(props) {
                     moviePic={`https://api.nomoreparties.co${movie.image.url}`}
                     onMovieCardClick={props.onMovieCardClick}
                     onMovieLike={props.onMovieLike}
-                    onMovieDislike={props.onMovieDislike} />)}
+                    onMovieDislike={props.onMovieDislike} 
+                    />)}
             </ul>
         </section>
     )
