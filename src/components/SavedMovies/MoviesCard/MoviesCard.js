@@ -1,25 +1,12 @@
 import React from "react";
 import './MoviesCard.css';
 import deleteBtn from '../../../images/close_btn.png';
+import { duration } from '../../../utils/const';
 
 function MoviesCard(props) {
 
     function handleCardClick() {
         props.onMovieCardClick(props.trailerLink);
-    }
-
-    function duration(t) {
-        let hours = 0;
-        let minutes = 0;
-        if (t >= 60) {
-            hours = ~~(t / 60);
-            minutes = t % 60;
-        }
-        if (t < 60) {
-            hours = 0;
-            minutes = t;
-        }
-        return `${hours}ч ${minutes}м`;
     }
 
     function handleMovieDelete() {

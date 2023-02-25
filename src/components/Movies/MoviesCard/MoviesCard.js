@@ -1,5 +1,6 @@
 import React from "react";
 import './MoviesCard.css';
+import { duration } from '../../../utils/const';
 
 function MoviesCard(props) {
 
@@ -8,20 +9,6 @@ function MoviesCard(props) {
     }
     function handleCardClick() {
         props.onMovieCardClick(props.movie.trailerLink);
-    }
-
-    function duration(t) {
-        let hours = 0;
-        let minutes = 0;
-        if (t >= 60) {
-            hours = ~~(t / 60);
-            minutes = t % 60;
-        }
-        if (t < 60) {
-            hours = 0;
-            minutes = t;
-        }
-        return `${hours}ч ${minutes}м`;
     }
 
     const isSaved = props.savedMovies.find((m) => m.movieId === props.movie.id);
