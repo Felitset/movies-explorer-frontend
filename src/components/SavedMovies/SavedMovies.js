@@ -14,7 +14,7 @@ function SavedMovies(props) {
     }
 
     useEffect(() => {
-        if (!props.movies || props.movies.length === 0){
+        if (!props.movies || props.movies.length === 0 || localStorage.getItem(props.localStorageQueryKey)===''){
             props.onFilterMovies('')
         }
     }, [])
