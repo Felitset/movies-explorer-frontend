@@ -12,8 +12,6 @@ function Movies(props) {
     const [isFailModalOpen, setIsFailModalOpen] = useState(false);
     const [nothingFoundShow, setNothingFoundShow] = useState('nothing_found_hide');
 
-    // const nothingFoundShow = ` ${localStorage.getItem(filteredAllMoviesKey) === [] ? 'nothing_found_hide' : 'nothing_found_show'}`;
-
     const [lastItemIndex, setLastItemIndex] = useState(pageStep);
     const [wasFiltered, setWasFiltered] = useState(localStorage.getItem(props.localStorageQueryKey)!==null && localStorage.getItem(props.localStorageQueryKey) !=='');
 
@@ -36,6 +34,7 @@ function Movies(props) {
         setLastItemIndex(pageStep);
         props.onFilterMovies(searchQuery);
     }
+    
     return (
         <>
             <main className="page__movies">
