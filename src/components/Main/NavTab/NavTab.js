@@ -2,7 +2,6 @@ import React from "react";
 import './NavTab.css';
 import { Link } from 'react-router-dom';
 import closeBtn from '../../../images/close_btn.png';
-import profileBtn from '../../../images/profile_btn.png';
 
 function NavTab(props) {
 
@@ -27,12 +26,12 @@ function NavTab(props) {
                         <Link
                             className='nav-tab__menu_link'
                             to="/saved-movies"
-                            onClick={props.onClose}>Сораненные фильмы</Link>
+                            onClick={props.onClose}>Сохраненные фильмы</Link>
                     </div>
-                    <img
+                    <Link
                         className='nav-tab__profile_btn'
-                        src={profileBtn}
-                        alt='Кнопка перехода на страцицу профиля' />
+                        to="/profile"
+                        onClick={props.onClose} />
                 </div>
             </div>
         </div>

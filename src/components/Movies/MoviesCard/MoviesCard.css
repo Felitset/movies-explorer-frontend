@@ -5,6 +5,15 @@
     padding-left: 22px;
     align-items: center;
     font-family: 'Inter', 'Arial', sans-serif;
+    margin-bottom: 40px;
+}
+
+.movie_card:hover {
+    cursor: pointer;
+}
+
+.movie_card:last-of-type {
+    margin-bottom: 0;
 }
 
 .movie_card__info {
@@ -36,6 +45,16 @@
     width: 14px;
     height: 12px;
     margin: 0 0 22px;
+    border: none;
+    background: url(../../../images/like_disabled.png);
+}
+
+.movie_like_btn:hover {
+    cursor: pointer;
+}
+
+.movie_like_btn_status_active {
+    background: url(../../../images/like_enabled.png);
 }
 
 .movie_card__pic {
@@ -50,9 +69,9 @@
         padding-left: 0;
         max-width: 100%;
         height: 232px;
-        /* align-items: center; */
+        margin-bottom: 20px;
     }
-    
+
     .movie_card__info {
         display: flex;
         flex-direction: column;
@@ -61,24 +80,24 @@
         height: 64px;
         width: 300px;
     }
-    
+
     .movie_title {
         font-size: 12px;
         line-height: 15px;
         margin: 0 30px 8px 12px;
         width: 228px;
     }
-    
+
     .movie_duration {
         font-size: 11px;
         line-height: 13px;
         margin: 0 0 0 12px;
     }
-    
+
     .movie_like_btn {
         margin: 0 16px 22px 0;
     }
-    
+
     .movie_card__pic {
         width: 300px;
         height: 168px;

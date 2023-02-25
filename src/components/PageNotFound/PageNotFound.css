@@ -30,7 +30,7 @@
 
 }
 
-.page_not_found__return_link {
+.page_not_found__return_button {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -38,9 +38,11 @@
     margin: 0 auto;
     color: #000000;
     transition: 0.4s;
+    border: none;
+    background: transparent;
 }
 
-.page_not_found__return_link:hover {
+.page_not_found__return_button:hover {
     cursor: pointer;
     transform: scale(1.2);
 }

@@ -30,6 +30,22 @@
     min-width: 396px;
 }
 
+.login__error {
+    display: none;
+}
+
+.login__error_active {
+    display: block;
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 12px;
+
+color: #FF4062;
+max-width: 296px;
+}
+
 .input__title {
     color: #A0A0A0;
     margin: 0;
@@ -41,7 +57,6 @@
     border: none;
     border-bottom: 2px solid #E8E8E8;
     padding: 5px 0 10px;
-    margin-bottom: 24px;
 }
 
 .if-unregistered_line {
@@ -73,6 +88,19 @@
 .login__button {
     width: 396px;
     height: 45px;
+    color: #000000;
+    font-size: 14px;
+    line-height: 17px;
+    background: #A0A0A0;
+    border-radius: 3px;
+    border: none;
+    margin: 134px auto 16px;
+    opacity: 0.6;
+}
+
+.login__button_status_active {
+    width: 396px;
+    height: 45px;
     color: #FFFFFF;
     font-size: 14px;
     line-height: 17px;
@@ -83,7 +111,7 @@
     transition: 0.7s ease-in-out;
 }
 
-.login__button:hover {
+.login__button_status_active:hover {
     cursor: pointer;
     background: #F3C1F8;
     color: #000000;

@@ -5,6 +5,10 @@
     font-family: 'Inter', 'Arial', sans-serif;
 }
 
+.navigation__hidden {
+    display: none;
+}
+
 .navigation__movies_link {
     text-decoration: none;
     color: #000000;

@@ -1,16 +1,16 @@
 import React, { useRef } from "react";
-import './SearchForm.css';
+import './SearchSavedForm.css';
 
-function SearchForm(props) {
+function SearchSavedForm(props) {
     const queryRef = useRef();
 
     function handleSubmit(e) {
         e.preventDefault();
         let searchQuery = queryRef.current.value
-        props.onFilterMovies(searchQuery)
+        props.onFilterSavedMovies(searchQuery)
     }
 
-    function shortFilmsToggleButton(e) {
+    function shortFilmsToggleButton(e){
         e.preventDefault();
         props.shortFilmsToggleButton();
     }
@@ -28,13 +28,13 @@ function SearchForm(props) {
                     className="search_input"
                     type="search"
                     placeholder="Фильм"
-                    ref={queryRef}
-                    defaultValue={localStorage.getItem(props.localStorageQueryKey)}>
+                    ref={queryRef}>
                 </input>
                 <button
                     type="submit"
                     className="search_btn"
                     onClick={handleSubmit}>
+
                 </button>
             </div>
 
@@ -50,4 +50,4 @@ function SearchForm(props) {
     )
 }
 
-export default SearchForm
+export default SearchSavedForm
