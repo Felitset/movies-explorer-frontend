@@ -139,7 +139,7 @@ function App() {
             return mainApi.getSavedMovies(token)
                 .then((res) => {
                     setSavedMovies(res)
-                    asyncLocalStorage.setItem(savedMoviesListKey, JSON.stringify(res));
+                    localStorage.setItem(savedMoviesListKey, JSON.stringify(res));
                     setFilteredSavedMovies(res)
                 }
                 )
@@ -246,9 +246,8 @@ function App() {
             query,
             localStorage.getItem(toggleStateAllMoviesKey))
         setFilteredAllMovies(filteredMovies)
-
-        localStorage.setItem(filteredAllMoviesKey, JSON.stringify(filteredMovies))
-        localStorage.setItem(localStorageQueryAllMoviesKey, query)
+        await asyncLocalStorage.setItem(filteredAllMoviesKey, JSON.stringify(filteredMovies))
+        await asyncLocalStorage.setItem(localStorageQueryAllMoviesKey, query)
         setLoading(false)
     }
 
