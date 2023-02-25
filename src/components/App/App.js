@@ -33,6 +33,7 @@ function App() {
     const [allMovies, setAllMovies] = useState([]);
     const [savedMovies, setSavedMovies] = useState([]);
     const [isFailModalOpen, setIsFailModalOpen] = useState(false);
+    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
     const [shortFilmAllMoviesFlag,
         setShortFilmAllMoviesFlag] = useState(localStorage.getItem(toggleStateAllMoviesKey) === 'true');
@@ -48,6 +49,7 @@ function App() {
         checkToken()
     }, [])
 
+
     const checkToken = useCallback(() => {
         try {
             const jwt = localStorage.getItem(jwtLSKey);
@@ -55,7 +57,8 @@ function App() {
                 throw new Error('No token in storage');
             }
             else {
-                mainApi.getUserProfile(jwt).then((data) => {
+                mainApi.getUserProfile(jwt)
+                .then((data) => {
                     setLoggedIn(true);
                     setCurrentUser({
                         name: data.name,
@@ -83,17 +86,16 @@ function App() {
     const authenticateUser = useCallback(async (email, password) => {
         try {
             const { token } = await mainApi.signInUser(email, password);
-
             if (!token) {
                 setIsFailModalOpen(true);
                 throw new Error('No token');
             }
 
             if (!loggedIn) {
+                setLoggedIn(true);
                 await asyncLocalStorage.setItem(jwtLSKey, token);
                 await asyncLocalStorage.setItem('isAuthenticated', true);
-                setLoggedIn(true);
-                checkToken()
+                checkToken();
             }
         } catch {
             setIsFailModalOpen(true);
@@ -117,7 +119,7 @@ function App() {
     const logout = useCallback(() => {
         Object.entries(localStorage).forEach(([key, val]) => {
             if (!val.includes(allMoviesListKey)) delete localStorage[key];
-          });
+        });
 
         setLoggedIn(false);
         setCurrentUser({});
@@ -137,7 +139,7 @@ function App() {
             return mainApi.getSavedMovies(token)
                 .then((res) => {
                     setSavedMovies(res)
-                    localStorage.setItem(savedMoviesListKey, JSON.stringify(res));
+                    asyncLocalStorage.setItem(savedMoviesListKey, JSON.stringify(res));
                     setFilteredSavedMovies(res)
                 }
                 )
@@ -230,6 +232,7 @@ function App() {
 
     function handleModalClose() {
         setIsFailModalOpen(false);
+        setIsSuccessModalOpen(false);
     }
 
     const getAndFilterAllMovies = async (query) => {
@@ -252,7 +255,7 @@ function App() {
     const getAndFilterSavedMovies = async (query) => {
         setLoading(true)
         let moviesList = localStorage.getItem(savedMoviesListKey)
-        if (!moviesList) {
+        if (!moviesList || moviesList.length === 0) {
             moviesList = await getSavedMovies()
         }
         let filteredMovies = filterMovies(
@@ -314,6 +317,7 @@ function App() {
             const token = localStorage.getItem('jwt');
             mainApi.updateUserProfile(token, userInfo)
                 .then((res) => {
+                    setIsSuccessModalOpen(true)
                     setCurrentUser(res)
                 })
                 .catch((err) => {
@@ -367,6 +371,8 @@ function App() {
                             component={Profile}
                             onUpdateProfile={handleUpdateUser}
                             onLogout={logout}
+                            isSuccessModalOpen={isSuccessModalOpen}
+                            onClose={handleModalClose}
                         />
 
                         <Route path="/signin">

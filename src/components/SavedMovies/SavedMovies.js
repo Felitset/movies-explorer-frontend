@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './SavedMovies.css';
 import SearchForm from '../Movies/SearchForm/SearchForm';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
@@ -12,6 +12,12 @@ function SavedMovies(props) {
     function handleModalClose() {
         setIsFailModalOpen(false)
     }
+
+    useEffect(() => {
+        if (!props.movies || props.movies.length === 0){
+            props.onFilterMovies('')
+        }
+    }, [])
 
     return (
         <>

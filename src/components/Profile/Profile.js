@@ -2,8 +2,9 @@ import React, { useContext, useState, useEffect } from "react";
 import './Profile.css';
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { useFormWithValidation } from '../FormValidator';
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
-function Profile({ onUpdateProfile, onLogout }) {
+function Profile({ onUpdateProfile, onLogout, isSuccessModalOpen, onClose }) {
     const userInfo = useContext(CurrentUserContext);
 
     const validateInput = useFormWithValidation();
@@ -46,6 +47,8 @@ function Profile({ onUpdateProfile, onLogout }) {
     };
 
     return (
+        <>
+        {isSuccessModalOpen && <InfoTooltip onClose={onClose} title='Успешно отредактировано!'/>}
         <div className="profile main__profile">
             <h1 className='profile__greeting'>Привет, {userInfo.name}!</h1>
             <form
@@ -92,6 +95,7 @@ function Profile({ onUpdateProfile, onLogout }) {
                 type='button'
                 onClick={onLogout}>Выйти из аккаунта</button>
         </div>
+        </>
     )
 }
 
