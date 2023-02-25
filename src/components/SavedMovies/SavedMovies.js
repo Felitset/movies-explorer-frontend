@@ -1,31 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import './SavedMovies.css';
 import SearchForm from '../Movies/SearchForm/SearchForm';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
-import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import Preloader from "../Movies/Preloader/Preloader"
 
 function SavedMovies(props) {
-    const [isFailModalOpen, setIsFailModalOpen] = useState(false);
-
-    function handleModalClose() {
-        setIsFailModalOpen(false)
-    }
 
     useEffect(() => {
-        if (!props.movies || props.movies.length === 0 || localStorage.getItem(props.localStorageQueryKey)===''){
+        if (props.movies.length === 0 || localStorage.getItem(props.localStorageQueryKey)===''){
             props.onFilterMovies('')
+        } else if (localStorage.getItem(props.localStorageQueryKey)!==null && localStorage.getItem(props.localStorageQueryKey)!==''){
+            props.onFilterMovies(localStorage.getItem(props.localStorageQueryKey))
         }
     }, [])
 
     return (
         <>
             <main className="page__saved_movies">
-                {isFailModalOpen && <InfoTooltip
-                    title="..."
-                    onClose={handleModalClose}
-                />}
 
                 <SearchForm
                     onFilterMovies={props.onFilterMovies}

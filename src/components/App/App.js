@@ -49,7 +49,6 @@ function App() {
         checkToken()
     }, [])
 
-
     const checkToken = useCallback(() => {
         try {
             const jwt = localStorage.getItem(jwtLSKey);
